@@ -4,7 +4,12 @@
   "rules": {
     "react/prefer-stateless-function": "off",
     "react/prop-types": "off",
-    "react/no-danger": "off"
+    "react/no-danger": "off",
+    "linebreak-style": [
+      "error",
+      "unix",
+      "windows"
+    ]
   },
   "settings": {
     "import/core-modules": []
