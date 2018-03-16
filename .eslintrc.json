@@ -2,14 +2,14 @@
   "extends": ["airbnb", "prettier"],
   "plugins": ["react", "jsx-a11y", "import"],
   "rules": {
-    "react/prefer-stateless-function": "off",
-    "react/prop-types": "off",
-    "react/no-danger": "off",
     "linebreak-style": [
       "error",
       "unix",
       "windows"
-    ]
+    ],
+    "react/prefer-stateless-function": "off",
+    "react/prop-types": "off",
+    "react/no-danger": "off"
   },
   "settings": {
     "import/core-modules": []
