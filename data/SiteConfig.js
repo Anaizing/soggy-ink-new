@@ -1,12 +1,13 @@
 module.exports = {
   blogPostDir: "sample-posts", // The name of directory that contains your posts.
-  siteTitle: "Gatsby Material Starter", // Site title.
-  siteTitleAlt: "GatsbyJS Material Starter", // Alternative site title for SEO.
+  siteTitle: "Soggy Ink", // Site title.
+  siteTitleAlt: "Soggy Ink", // Alternative site title for SEO.
   siteLogo: "/logos/logo-1024.png", // Logo used for SEO and manifest.
   siteUrl: "https://vagr9k.github.io", // Domain of your website without pathPrefix.
   pathPrefix: "/gatsby-material-starter", // Prefixes all links. For cases when deployed to example.github.io/gatsby-material-starter/.
   fixedFooter: false, // Whether the footer component is fixed, i.e. always visible
-  siteDescription: "A GatsbyJS stater with Material design in mind.", // Website description used for RSS feeds/meta description tag.
+  siteDescription:
+    "Articles on Javascript, React, Node.js, CSS Grid, the walls I beat my head against and the struggle on this beautiful journey towards mastering my craft.", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
   siteFBAppID: "1825356251115265", // FB Application ID for using app insights
   siteGATrackingID: "UA-47311644-4", // Tracking code ID for google analytics.
