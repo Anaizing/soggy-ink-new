@@ -18,7 +18,7 @@ module.exports = {
   userLocation: "Sydney, Australia", // User location to display in the author segment.
   userAvatar: "https://api.adorable.io/avatars/150/test.png", // User avatar to display in the author segment.
   userDescription:
-    "An inquisitive Freelance Web developer with a knack for creative problem solving.&quot; At least thats what I wish people were saying about me, Im more of a latecomer to this huge web dev world trying to catch up one failure at a time, with a big fucking smile on my face! Anai Araya", // User description to display in the author segment.
+    "An inquisitive Freelance Web developer with a knack for creative problem solving. At least thats what I wish people were saying about me, Im more of a latecomer to this huge web dev world trying to catch up one failure at a time, with a big fucking smile on my face! Anai Araya", // User description to display in the author segment.
   // Links to social profiles/projects you want to display in the author segment/navigation bar.
   userLinks: [
     {
