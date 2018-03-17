@@ -1,229 +1,379 @@
 ---
-title: "Git commands Pt3-Day 27"
-cover: "https://images.unsplash.com/photo-1506223327129-a4405640764e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5ed0181345e1725c056998383fe80d9c&auto=format&fit=crop&w=1400&q=80"
+title: "Git commands Pt2-Day 26"
+cover: "https://images.unsplash.com/photo-1513258496099-48168024aec0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=73c00aaa6d23115d7fbe494c0cc1e5e3&auto=format&fit=crop&w=1050&q=80"
 category: "git"
 date: "29/01/2018"
+tags:
+    - git
+    - diff
+    - gitignore
+    - tagging
+    - branching
+    - merging
+
 ---
 
-![girl walking with skateboard](https://images.unsplash.com/photo-1506223327129-a4405640764e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5ed0181345e1725c056998383fe80d9c&auto=format&fit=crop&w=1400&q=80)
+![man starting at his laptop](https://images.unsplash.com/photo-1513258496099-48168024aec0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=73c00aaa6d23115d7fbe494c0cc1e5e3&auto=format&fit=crop&w=1050&q=80)
 
-# Undoing Changes
+Strap yourself in, we're not done yet`!`
 
-So here goes the last section of Git Commands, for all the mistakes you will undoubtedly make. Now you can make them with confidence`!`
+# `git diff`
 
-# Changing the last commit
+![terminal output](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/58a3901f_ud123-l4-git-diff/ud123-l4-git-diff.png)
 
-# `git --amend`
+The git diff command can be used to see changes that have been made but haven't been committed, yet.
 
-With the --amend flag, you can alter the most-recent commit.
+    $ git diff
 
-    $ git commit --amend
+`git log -p` uses git `diff` under the hood.
 
-If your Working Directory is clean (meaning there aren't any uncommitted changes in the repository), then running git commit --amend will let you provide a new commit message. Your code editor will open up and display the original commit message. Just fix a misspelling or completely reword it! Then save it and close the editor to lock in the new commit message.
+# Globing
 
-### Add Forgotten Files To Commit
+`Globbing` lets you use special characters to match patterns/characters. In the `.gitignore` file, you can use the following:
 
-Alternatively, git commit --amend will let you include files (or changes to files) you might've forgotten to include. Let's say you've updated the color of all navigation links across your entire website. You committed that change and thought you were done. But then you discovered that a special nav link buried deep on a page doesn't have the new color. You could just make a new commit that updates the color for that one link, but that would have two back-to-back commits that do practically the exact same thing (change link colors).
+blank lines can be used for spacing
+* `#` - marks line as a comment
+* `*` - matches 0 or more characters
+* `?` - matches 1 character
+* `[abc]` - matches a, b, or c
+* `**` - matches nested directories - `a/**/z` matches
+    * `a/z`
+    * `a/b/z`
+    * `a/b/c/z`
 
-Instead, you can amend the last commit (the one that updated the color of all of the other links) to include this forgotten one. To do get the forgotten link included, just:
+So if all of the 50 images are JPEG images in the "samples" folder, we could add the following line to `.gitignore` to have Git ignore all 50 images.
 
-* edit the file(s)
-* save the file(s)
-* stage the file(s)
-* and run `git commit --amend`
-
-So you'd make changes to the necessary CSS and/or HTML files to get the forgotten link styled correctly, then you'd save all of the files that were modified, then you'd use `git add` to stage all of the modified files (just as if you were going to make a new commit!), but then you'd run `git commit --amend` to update the most-recent commit instead of creating a new one.
-
-# Reverting a commit
-
-When you tell Git to revert a specific commit, Git takes the changes that were made in commit and does the exact opposite of them. Let's break that down a bit. If a character is added in commit A, if Git reverts commit A, then Git will make a new commit where that character is deleted. It also works the other way where if a character/line is removed, then reverting that commit will add that content back!
-
-# `git revert`
-
-Lets say I've made a commit with some changes, I can revert it with the git revert command
-
-    $ git revert <SHA-of-commit-to-revert>
-
-If the SHA of the most-recent commit is db7e87a, to revert it: I'll just run git revert db7e87a (this will pop open my code editor to edit/accept the provided commit message)
-
-I'll get the following output:
-
-![terminal output](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/58a4dedb_ud123-l6-git-revert-post/ud123-l6-git-revert-post.png)
-
-The output of the git revert command tells us what it reverted.  It uses the commit message of the commit that I told it to revert. Something that's also important is that it creates a new commit.
-
-Recap
-
- the git revert command is used to reverse a previously made commit:
-
-    $ git revert <SHA-of-commit-to-revert>
-
-This command:
-
-* will undo the changes that were made by the provided commit
-* creates a new commit to record the change
-
-# Reset vs Revert
-
-At first glance, resetting might seem coincidentally close to reverting, but they are actually quite different. Reverting creates a new commit that reverts or undoes a previous commit. Resetting, on the other hand, erases commits!
-
-    Resetting is Dangerous
-
-You've got to be careful with Git's resetting capabilities. This is one of the few commands that lets you erase commits from the repository. If a commit is no longer in the repository, then its content is gone.
-
-To alleviate the stress a bit, Git does keep track of everything for about 30 days before it completely erases anything. To access this content, you'll need to use the `git reflog` command. Follow these links for a bit more info on reflog.
-
-* [git reflog docs](https://git-scm.com/docs/git-reflog)
-* [Rewriting History](https://www.atlassian.com/git/tutorials/rewriting-history)
-* [reflog, your safety net](http://gitready.com/intermediate/2009/02/09/reflog-your-safety-net.html)
-
-### Relative Commit References
-
-You already know that you can reference commits by their SHA, by tags, branches, and the special HEAD pointer. Sometimes that's not enough, though. There will be times when you'll want to reference a commit relative to another commit. For example, there will be times where you'll want to tell Git about the commit that's one before the current commit...or two before the current commit. There are special characters called "Ancestry References" that we can use to tell Git about these relative references. Those characters are:
-
-* `^` – indicates the parent commit
-* `~` – indicates the `first` parent commit
-
-Here's how we can refer to previous commits:
-
-* the parent commit – the following indicate the parent commit of the current commit
-    * HEAD^
-    * HEAD~
-    * HEAD~1
-* the grandparent commit – the following indicate the grandparent commit of the current commit
-    * HEAD^^
-    * HEAD~2
-* the great-grandparent commit – the following indicate the great-grandparent commit of the current commit
-    * HEAD^^^
-    * HEAD~3
-
-The main difference between the `^` and the `~` is when a commit is created from a merge. A merge commit has two parents. With a merge commit, the `^` reference is used to indicate the first parent of the commit while `^2` indicates the second parent. The first parent is the branch you were on when you ran `git merge` while the second parent is the branch that was merged in.
-
-It's easier if we look at an example. This what my `git log` currently shows:
-
-    * 9ec05ca (HEAD -> master) Revert "Set page heading to "Quests & Crusades""
-    * db7e87a Set page heading to "Quests & Crusades"
-    *   796ddb0 Merge branch 'heading-update'
-    |\  
-    | * 4c9749e (heading-update) Set page heading to "Crusade"
-    * | 0c5975a Set page heading to "Quest"
-    |/  
-    *   1a56a81 Merge branch 'sidebar'
-    |\  
-    | * f69811c (sidebar) Update sidebar with favorite movie
-    | * e6c65a6 Add new sidebar content
-    * | e014d91 (footer) Add links to social media
-    * | 209752a Improve site heading for SEO
-    * | 3772ab1 Set background color for page
-    |/  
-    * 5bfe5e7 Add starting HTML structure
-    * 6fa5f34 Add .gitignore file
-    * a879849 Add header to blog
-    * 94de470 Initial commit
-
-Let's look at how we'd refer to some of the previous commits. Since HEAD points to the 9ec05ca commt:
-
-* HEAD^ is the db7e87a commit
-* HEAD~1 is also the db7e87a commit
-* HEAD^^ is the 796ddb0 commit
-* HEAD~2 is also the 796ddb0 commit
-* HEAD^^^ is the 0c5975a commit
-* HEAD~3 is also the 0c5975a commit
-* HEAD^^^2 is the 4c9749e commit (this is the grandparent's (HEAD^^) second parent (^2))
-
-# `git reset`
-
-The `git reset` command is used to reset (erase) commits:
-
-    $ git reset <reference-to-commit>
-
-It can be used to:
-
-* move the HEAD and current branch pointer to the referenced commit
-* erase commits
-* move committed changes to the staging index
-* unstage committed changes
-
-
-### Git Reset Flags
-
-The way that Git determines if it erases, stages previously committed changes, or unstages previously committed changes is by the flag that's used. The flags are:
-
-* `--mixed`
-* `--soft`
-* `--hard`
-
-![git areas diagram](https://scontent-syd2-1.xx.fbcdn.net/v/t1.0-9/27971867_10159881556575117_2719193303220750502_n.jpg?oh=a42e8d62abbfde8d72d02ab0a94657d8&oe=5B1EDC7D)
-
-As you can see above, there are 3 areas to which a commit that is reset can go to.
-
-    1. The Working Directory
-    2. Staging Index
-    3. Trash (erased)
-
-Running for example, git reset parent 
-
-    git reset HEAD~1
-
-Will move HEAD and master to the previous commit, so these 3 tags represent how that left over commit is treated...
-
-![git areas diagram](https://scontent-syd2-1.xx.fbcdn.net/v/t1.0-9/27751915_10159881575825117_7213121364030311453_n.jpg?oh=26ae7b79a8c04d1bae63a46e802024d6&oe=5B20CEC2)
-
-as you can see commit 3 is left hanging. 
-
-# `--mixed`
-
-This is the default. So running 
-
-    git reset HEAD~1
-
-without a flag is the same as running
-
-    git reset --mixed HEAD~1
-
-So if we stage the files, and commit again, we'll get the same commit content. We'll get a different commit SHA, because the timestamp of the commit will be different from the original one, but the commit content will be exactly the same.
+    samples/*.jpg
 
 </br>
 
-# `--soft`
+# `.gitignore`
 
-    git reset --soft HEAD~1
+To recap, the `.gitignore` file is used to tell Git about the files that Git should not track. This file should be placed in the same directory that the .git directory is in.
 
-Using this flag we'll move the changes that were made in the commit with SHA 3 to the `Staging Index`, its the same changes, and now they're even staged for you, all we need to do is run `git commit` to get the commit back. Again since the time stamp will be different, the SHA will change, but not the content of the commit.
+# Tagging, Branching & Merging
 
-# `--hard`
 
-    git reset --hard HEAD~1
+![code editor waiting on tag message](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/58a39be9_ud123-l5-editor-with-tag-message/ud123-l5-editor-with-tag-message.png)
 
-This will throw out all of the changes that were made in the commit with SHA 3
+# `git tag`
 
-Remember that using the `git reset` command will erase commits from the current branch. So its a good idea to create a backup branch.
+The `git tag` command is used to add a marker on a specific commit. The tag does not move around as new commits are added
 
-    $ git branch backup
+    $ git tag -a v1.0
 
-Recap
+This command will:
 
-To recap, the git reset command is used erase commits:
+* add a tag to the most recent commit
+* add a tag to a specific commit if a SHA is passed
 
-    $ git reset <reference-to-commit>
+### Annotates tags
+
+Above the `-a` flag is used. This flag tells Git to create an annotated flag. If you don't provide the flag (i.e. `git tag v1.0`) then it'll create what's called a lightweight tag.
+
+Annotated tags are recommended because they include a lot of extra information such as:
+
+* the person who made the tag
+* the date the tag was made
+* a message for the tag
+
+Because of this, you should always use annotated tags.
+
+You can use `git log` to see the annotated tag.
+
+### Deleting  Tag
+
+What if you accidentally misspelled something in the tag's message, or mistyped the actual tag name (v0.1 instead of v1.0). How could you fix this? The easiest way is just to delete the tag and make a new one.
+
+A Git tag can be deleted with the -d flag (for delete!) and the name of the tag:
+
+    $ git tag -d v1.0
+
+</br>
+
+### Adding A Tag To A Past Commit
+
+Running `git tag -a v1.0` will tag the most recent commit. But what if you wanted to tag a commit that occurred farther back in the repo's history?
+
+All you have to do is provide the SHA of the commit you want to tag!
+
+    $ git tag -a v1.0 a87984
+
+</br>
+
+# Branching
+
+The git branch command is used to interact with Git's branches:
+
+    $ git branch
 
 It can be used to:
 
-* move the HEAD and current branch pointer to the referenced commit
-* erase commits with the `--hard` flag
-* moves committed changes to the staging index with the --soft flag
-* unstages committed changes `--mixed` flag
+* list all branch names in the repository
+* create new branches
+* delete branches
 
-Typically, ancestry references are used to indicate previous commits. The ancestry references are:
+If we type out just git branch it will list out the branches in a repository:
 
-* `^` – indicates the parent commit
-* `~` – indicates the first parent commit
+### Create a Branch
 
-![graduate popping a bottle of champagne](https://images.unsplash.com/photo-1506967236291-3d3c4ad88abd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8966dd3034be8631151ec07601acfa02&auto=format&fit=crop&w=1498&q=80)
+To create a branch, all you have to do is use `git branch` and provide it the name of the branch you want it to create. So if you want a branch called "sidebar", you'd run this command:
 
-The End...
+    $ git branch sidebar
+
+</br>
+
+### Switching Branches
 
 
+Remember that when a commit is made that it will be added to the current branch. So even though we created the new `sidebar`, no new commits will be added to it since we haven't switched to it, yet. If we made a commit right now, that commit would be added to the `master` branch, not the sidebar branch. 
+
+# `git checkout`
+
+To switch between branches, we need to use Git's `checkout` command.
+
+    $ git checkout sidebar
+
+Running this command will:
+
+* remove all files and directories from the Working Directory that Git is tracking
+    * (files that Git tracks are stored in the repository, so nothing is lost)
+* go into the repository and pull out all of the files and directories of the commit that the branch points to
+
+Running this command will:
+
+* remove all files and directories from the Working Directory that Git is tracking
+(files that Git tracks are stored in the repository, so nothing is lost)
+* go into the repository and pull out all of the files and directories of the commit that the branch points to
+
+The funny thing, though, is that both sidebar and master are pointing at the same commit, so it will look like nothing changes when you switch between them. But the command prompt will show "sidebar", now:
+
+![terminal showing sidebar](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/58a4c60a_ud123-l5-git-checkout-sidebar/ud123-l5-git-checkout-sidebar.png)
+
+### Branches in the log
+
+The branch information in the command prompt is helpful, but the clearest way to see it is by looking at the output of git log. But just like we had to use the --decorate flag to display Git tags, we need it to display branches.
+
+    $ git log --oneline --decorate
+
+In the output above, notice how the special "HEAD" indicator we saw earlier has an arrow pointing to the sidebar branch. It's pointing to sidebar because the sidebar branch is the current branch, and any commits made right now will be added to the sidebar branch.
+
+### The Active Branch
+
+The command prompt will display the active branch. But this is a special customization we made to our prompt. If you find yourself on a different computer, the fastest way to determine the active branch is to look at the output of the git branch command. An asterisk will appear next to the name of the active branch.
+
+![active branch bar output](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/58a4c6aa_ud123-l5-git-branch-asterisk/ud123-l5-git-branch-asterisk.png)
+
+
+### Delete a branch
+
+A branch is used to do development or make a fix to the project that won't affect the project (since the changes are made on a branch). Once you make the change on the branch, you can combine that branch into the master branch (this "combining of branches" is called `merging` and we'll look at shortly).
+
+Now after a branch's changes have been merged, you probably won't need the branch anymore. If you want to delete the branch, you'd use the `-d` flag. The command below includes the `-d` flag which tells Git to delete the provided branch (in this case, the "sidebar" branch).
+
+    $ git branch -d sidebar
+
+One thing to note is that you can't delete a branch that you're currently on. So to delete the sidebar branch, you'd have to switch to either the `master` branch or create and switch to a new branch.
+
+If you created the sidebar branch, added commits to it, and then tried to delete it with the git branch `-d` sidebar, Git wouldn't let you delete the branch because you can't delete a branch that you're currently on. If you switched to the master branch and tried to delete the sidebar branch, Git also wouldn't let you do that because those new commits on the sidebar branch would be lost! To force deletion, you need to use a capital D flag - git branch `-D`h sidebar.
+
+Recap
+
+    // to list all branches
+    $ git branch
+
+    // to create a new "footer-fix" branch
+    $ git branch footer-fix
+
+    // to delete the "footer-fix" branch
+    $ git branch -d footer-fix
+
+</br>
+
+### Switch and Create Branch In One Command
+
+The way we currently work with branches is to create a branch with the `git branch` command and then switch to that newly created branch with the `git checkout` command.
+
+But did you know that the `git checkout` command can actually create a new branch, too? If you provide the `-b` flag, you can create a branch and switch to it all in one command.
+
+    $ git checkout -b anaizing-branch-for-awesome-changes
+
+If you wanted to create a new footer branch and have this footer branch start at the same location as the master branch you would do this:
+
+    $ git checkout -b footer master
+
+Now if we run a quick git log --oneline --decorate, we should see (your commit messages might be different):
+
+![terminal](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/58a4d41d_ud123-l5-git-checkout-b-footer-master/ud123-l5-git-checkout-b-footer-master.png)
+
+The Terminal application showing the output of `git log --oneline --decorate`. The special `HEAD` pointer is pointing at the footer branch. The footer branch is on the same commit as the "master" branch.
+
+### See all branches at Once
+
+The `--graph` flag adds the bullets and lines to the leftmost part of the output. This shows the actual branching that's happening. The `--all` flag is what displays all of the branches in the repository.
+
+    $ git log --oneline --decorate --graph --all
+
+Running this command will show all branches and commits in the repository:
+
+![terminal](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/58a4d51e_ud123-l5-git-log-graph-all/ud123-l5-git-log-graph-all.png)
+
+# Merging
+
+Remember that the purpose of a topic branch (like sidebar) is that it lets you make changes that do not affect the master branch. Once you make changes on the topic branch, you can either decide that you don't like the changes on the branch and you can just delete that branch, or you can decide that you want to keep the changes on the topic branch and combine those changes in with those on another branch.
+
+Combining branches together is called `merging`.
+
+Git can automatically merge the changes on different branches together. This branching and merging ability is what makes Git incredibly powerful! You can make small or extensive changes on branches, and then just use Git to combine those changes together.
+
+### Know the branch
+
+It's very important to know which branch you're on when you're about to merge branches together. Remember that making a merge makes a commit.
+If you make a merge on the wrong branch, use this command to undo the merge:
+
+    git reset --hard HEAD^
+
+Make sure to include the `^` character! It's a known as a `Relative Commit Reference` and indicates `the parent commit`.
+
+### The Merge Command 
+
+The git merge command is used to combine Git branches:
+
+    $ git merge <name-of-branch-to-merge-in>
+
+When a merge happens, Git will:
+
+* look at the branches that it's going to merge
+* look back along the branch's history to find a single commit that both branches have in their commit history
+* combine the lines of code that were changed on the separate branches together
+* makes a commit to record the merge
+
+### Fast forward merge 
+
+Say I've checked out the master branch and I want it to have the changes that are on the `footer` branch. If I wanted to verbalize this, I could say this is - `"I want to merge in the footer branch"`. That `merge in` is important; when a merge is performed, the other branch's changes are brought into the branch that's currently `checked out`.
+
+Let me stress that again - When we merge 
+* we're merging some other branch into the current (checked-out) branch. 
+* We're not merging two branches into a new branch. 
+* We're not merging the current branch into the other branch.
+
+Now, since `footer` is directly ahead of `master`, this merge is one of the easiest merges to do. Merging `footer` into `master` will cause a `Fast-forward merge`. A Fast-forward merge will just move the currently checked out branch forward until it points to the same commit that the other branch (in this case, footer) is pointing to.
+
+To merge in a footer branch, run:
+
+    $ git merge footer
+
+### Perform a regular Merge 
+
+So let's do the more common kind of merge where two divergent branches are combined. You'll be surprised that to merge in a divergent branch like sidebar is actually no different!
+
+To merge in the sidebar branch, make sure you're on the master branch and run:
+
+    $ git merge sidebar
+
+Because this combines two divergent branches, a commit is going to be made. And when a commit is made, a commit message needs to be supplied. Since this is a merge commit a default message is already supplied. You can change the message if you want, but it's common practice to use the default merge commit message. So when your code editor opens with the message, just close it again and accept that commit message.
+
+This is what my Terminal shows after using the default commit message:
+
+![The Terminal application showing the result of merging the sidebar branch](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/58a4d84e_ud123-l5-git-merge-sidebar/ud123-l5-git-merge-sidebar.png)
+
+To recap, the git merge command is used to combine branches in Git:
+
+    $ git merge <other-branch>
+
+There are two types of merges:
+
+* Fast-forward merge – the branch being merged in must be ahead of the checked out branch. The checked out branch's pointer will just be moved forward to point to the same commit as the other branch.
+* the regular type of merge
+    * two divergent branches are combined
+    * a merge commit is created
+
+# Merge Conflict
+
+When a merge fails, it's called a `merge conflict`. If a merge conflict does occur, Git will try to combine as much as it can, but then it will leave special markers (e.g. >>> and <<<) that tell you where you (yep, you the programmer!) needs to manually fix.
+
+### What Causes A Merge Conflict
+
+As you've learned, Git tracks lines in files. A merge conflict will happen when the exact same line(s) are changed in separate branches. For example, if you're on a alternate-sidebar-style branch and change the sidebar's heading to "About Me" but then on a different branch and change the sidebar's heading to "Information About Me", which heading should Git choose? You've changed the heading on both branches, so there's no way Git will know which one you actually want to keep. And it sure isn't going to just randomly pick for you!
+Remember that a merge conflict occurs when Git isn't sure which line(s) you want to use from the branches that are being merged. 
+
+
+This is what the terminal will look like when two branches alter the same file
+
+![terminal output](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/58a4dbc5_ud123-l5-git-merge-conflict-prep2/ud123-l5-git-merge-conflict-prep2.png)
+
+Remember to view the branch structure you input
+
+    $ git log --oneline --decorate --graph --all
+
+When you perform a merge conflict your terminal will have this output 
+
+![Terminal output](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/58a4dc22_ud123-l5-git-merge-conflict/ud123-l5-git-merge-conflict.png)
+
+### Merge Conflict Output Explained
+
+    $ git merge heading-update 
+    Auto-merging index.html
+    CONFLICT (content): Merge conflict in index.html
+    Automatic merge failed; fix conflicts and then commit the result.
+
+Notice that right after the git merge heading-update command, it tries merging the file that was changed on both branches (index.html), but that there was a conflict. Also, notice that it tells you what happened - "Automatic merge failed; fix conflicts and then commit the result".
+
+and your code editor will look something like this
+
+![code editor output](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/58a74de1_ud123-l5-git-merge-conflict-indicators/ud123-l5-git-merge-conflict-indicators.png)
+
+### Merge Conflict Indicators Explanation
+
+The editor has the following merge conflict indicators:
+
+    * <<<<<<< HEAD everything below this line 
+    (until the next indicator) shows you what's 
+    on the current branch
+    * ||||||| merged common ancestors everything 
+    below this line (until the next indicator) 
+    shows you what the original lines were
+    * ======= is the end of the original lines, 
+    everything that follows (until the next 
+    indicator) is what's on the branch that's 
+    being merged in
+    * >>>>>>> heading-update is the ending 
+    indicator of what's on the branch that's 
+    being merged in (in this case, the 
+    heading-update branch)
+
+</br>
+
+### Resolving a merge conflict
+
+Git is using the merge conflict indicators to show you what lines caused the merge conflict on the two different branches as well as what the original line used to have. So to resolve a merge conflict, you need to:
+
+    1. choose which line(s) to keep
+    2. remove all lines with indicators
+
+</br>
+
+### Commit Merge Conflict
+
+Once you've removed all lines with merge conflict indicators and have selected what heading you want to use, just save the file, add it to the staging index, and commit it! Just like with a regular merge, this will pop open your code editor for you to supply a commit message. Just like before, it's common to use the provided merge commit message, so after the editor opens, just close it to use the provided commit message.
+
+
+### Merge Conflict Recap
+
+A merge conflict happens when the same line or lines have been changed on different branches that are being merged. Git will pause mid-merge telling you that there is a conflict and will tell you in what file or files the conflict occurred. To resolve the conflict in a file:
+
+* locate and remove all lines with merge conflict indicators
+* determine what to keep
+* save the file(s)
+* stage the file(s)
+* make a commit
+
+Be careful that a file might have merge conflicts in multiple parts of the file, so make sure you check the entire file for merge conflict indicators - a quick search for <<< should help you locate all of them
+
+
+And yeah, theres still more!
+
+See ya
 
 Resources
 
