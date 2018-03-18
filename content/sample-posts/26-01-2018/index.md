@@ -1,11 +1,12 @@
 ---
-title: "Angels of Mist"
-cover: "https://unsplash.it/400/300/?random?AngelsofMist"
+title: "Github & Git/ Version Control-Day 23"
+cover: "https://images.unsplash.com/photo-1498622429433-bbb22b92ee02?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bfea5f4bae9d48800b7a85cf4669a704&auto=format&fit=crop&w=1500&q=80"
 category: "test3"
-date: "01/03/2017"
+date: "26/01/2018"
 tags:
-    - cheese
-    - other
+    - git
+    - github
+    - verison control
 ---
 
 ![two developers working back to back](https://images.unsplash.com/photo-1498622429433-bbb22b92ee02?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bfea5f4bae9d48800b7a85cf4669a704&auto=format&fit=crop&w=1500&q=80)
