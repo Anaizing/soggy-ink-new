@@ -12,11 +12,11 @@ module.exports = {
   siteFBAppID: "1825356251115265", // FB Application ID for using app insights
   siteGATrackingID: "UA-47311644-4", // Tracking code ID for google analytics.
   disqusShortname: "https-vagr9k-github-io-gatsby-material-starter", // Disqus shortname.
-  postDefaultCategoryID: "Tech", // Default category for posts.
+  postDefaultCategoryID: "Javascript", // Default category for posts.
   userName: "Anaizing", // Username to display in the author segment.
   userTwitter: "", // Optionally renders "Follow Me" in the UserInfo segment.
   userLocation: "Sydney, Australia", // User location to display in the author segment.
-  userAvatar: "https://api.adorable.io/avatars/150/test.png", // User avatar to display in the author segment.
+  userAvatar: "https://avatars0.githubusercontent.com/u/29471810?s=460&v=4", // User avatar to display in the author segment.
   userDescription:
     "An inquisitive Freelance Web developer with a knack for creative problem solving. At least thats what I wish people were saying about me, Im more of a latecomer to this huge web dev world trying to catch up one failure at a time, with a big fucking smile on my face! Anai Araya", // User description to display in the author segment.
   // Links to social profiles/projects you want to display in the author segment/navigation bar.
