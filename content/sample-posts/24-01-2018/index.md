@@ -2,7 +2,7 @@
 title: "The Fetch API-Day 21"
 cover: "https://images.unsplash.com/photo-1503514731955-7f665dde1225?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a404d2e19cc961dda62daff26b766ae9&auto=format&fit=crop&w=1050&q=80"
 date: "24/01/2018"
-category: "PWA"
+category: "pwa"
 tags:
     - fetch api
     - fetch
