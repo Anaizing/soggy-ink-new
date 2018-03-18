@@ -1,6 +1,6 @@
 ---
 title: "Quick history of Ajax-Day 20"
-cover: "https://unsplash.it/400/300/?random?BoldMage"
+cover: "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=afb35d2683e102d67bcd70b87b100723&auto=format&fit=crop&w=1350&q=80"
 date: "23/01/2018"
 category: "PWA"
 tags:
