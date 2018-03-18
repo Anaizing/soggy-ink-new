@@ -14,8 +14,7 @@ class Footer extends Component {
     if (!copyright) {
       return null;
     }
-    return (
-      <footer className={fixedFooter ? "footer footer-fixed" : "footer"}>
+    return <footer className={fixedFooter ? "footer footer-fixed" : "footer"}>
         {userLinks ? <UserLinks config={config} labeled /> : null}
         <div className="notice-container">
           <div className="copyright">
@@ -31,15 +30,11 @@ class Footer extends Component {
           </div>
           <div className="Created-by">
             <h4>
-              Based on{" "}
-              <a href="">
-                Anai Araya
-              </a>.
+              Created by <a href="http://anaizing.design">Anai Araya</a>.
             </h4>
           </div>
         </div>
-      </footer>
-    );
+      </footer>;
   }
 }
 
