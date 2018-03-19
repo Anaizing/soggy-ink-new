@@ -2,13 +2,10 @@
 title: "The Cache API-Day 22"
 cover: "https://images.unsplash.com/photo-1494888427482-242d32babc0b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a689c51340e923fd138d8f3b5f578110&auto=format&fit=crop&w=1500&q=80"
 date: "25/01/2018"
-category: "pwa"
+category: "PWA"
 tags:
-    - cache api
-    - cache
-    - api
-    - javascript
-    
+    - hi
+    - hello
 
 ---
 
