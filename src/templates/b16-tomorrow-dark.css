@@ -15,7 +15,7 @@ pre[class*="language-"] {
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
-    background: #1d1f21;
+    background: #443c53;
     color: #c5c8c6;
 }
 
@@ -68,11 +68,11 @@ pre[class*="language-"] {
 }
 
 .token.property {
-    color: yellow;
+    color: rgb(238, 164, 28);
 }
 
 .token.tag {
-    color: yellow;
+    color: lime;
 }
 
 .token.string {
@@ -99,7 +99,7 @@ pre[class*="language-"] {
 .token.control,
 .token.directive,
 .token.unit {
-    color: deeppink;
+    color: rgb(247, 52, 156);
 }
 
 .token.statement,
