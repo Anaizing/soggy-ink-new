@@ -5,8 +5,8 @@ date: "12/01/2018"
 category: "Testing"
 tags:
     - javascript
-    - ajax
-    - asynchronous js
+    - continuous intergration
+    - testing
 ---
 ##### 20 min read... Continuous Intergration/
 

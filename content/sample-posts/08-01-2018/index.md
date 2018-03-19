@@ -5,8 +5,8 @@ date: "08/01/2018"
 category: "javascript"
 tags:
     - javascript
-    - ajax
-    - asynchronous js
+    - promise
+    - fundamentals
 ---
 ##### 10min read... Promises in Js/Terminology
 

@@ -5,8 +5,9 @@ date: "11/01/2018"
 category: "React"
 tags:
     - javascript
-    - ajax
-    - asynchronous js
+    - react
+    - components
+    - styles
 ---
 ##### 10min read... Options/Plain CSS/Compiled languages that enhance CSS/Inline Styles/CSS Modules/CSS in JS libraries
 

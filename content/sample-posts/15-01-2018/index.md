@@ -5,8 +5,7 @@ date: "15/01/2018"
 category: "react"
 tags:
     - javascript
-    - ajax
-    - asynchronous js
+    - react
 ---
 ##### 5 min read... or the rest of your day(up to you)
 

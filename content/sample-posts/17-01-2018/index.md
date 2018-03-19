@@ -5,8 +5,8 @@ date: "17/01/2018"
 category: "javascript"
 tags:
     - javascript
-    - ajax
-    - asynchronous js
+    - promises
+    - fundamentals
 ---
 ##### 15 min read...
 

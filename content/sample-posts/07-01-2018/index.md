@@ -5,8 +5,8 @@ date: "07/01/2018"
 category: "React"
 tags:
     - javascript
-    - ajax
-    - asynchronous js
+    - react
+    - declarative
 ---
 ##### 3min read... Imperative vs Declarative
 

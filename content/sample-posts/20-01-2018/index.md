@@ -2,11 +2,11 @@
 title: "Stack it! -Day 17"
 cover: "https://images.unsplash.com/photo-1506718468845-7578aa47670b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=058c56f9d18bea58d07c1934e5cd52bd&auto=format&fit=crop&w=750&q=80"
 date: "20/01/2018"
-category: "javascript"
+category: "Data Structures"
 tags:
     - javascript
-    - ajax
-    - asynchronous js
+    - data structures
+    - stack
 ---
 
 #### 20 min read...

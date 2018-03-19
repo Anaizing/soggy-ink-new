@@ -2,11 +2,11 @@
 title: "A List ADT -Day 16"
 cover: "https://images.unsplash.com/photo-1461411250718-4b4a5c0b270a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7acd92157777d244d620a2f87d05f38d&auto=format&fit=crop&w=737&q=80"
 date: "19/01/2018"
-category: "javascript"
+category: "Data Structures"
 tags:
     - javascript
-    - ajax
-    - asynchronous js
+    - data structures
+    - lists
 ---
 
 #### 15 min read...

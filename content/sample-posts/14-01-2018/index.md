@@ -5,8 +5,8 @@ date: "14/01/2018"
 category: "Architectural Design Patterns"
 tags:
     - javascript
-    - ajax
-    - asynchronous js
+    - anti patterns
+    - design patterns
 ---
 
 ##### 5 min read... What are Design Patterns?/Anti-Patterns

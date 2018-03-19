@@ -5,8 +5,8 @@ date: "06/01/2018"
 category: "javascript"
 tags:
     - javascript
-    - ajax
-    - asynchronous js
+    - coercion
+    - fundamentals
 ---
 ##### 15min read... Coercion in JS/Primitive types/Natives
 

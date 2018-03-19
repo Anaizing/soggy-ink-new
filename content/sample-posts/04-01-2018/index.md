@@ -5,8 +5,8 @@ date: "04/01/2018"
 category: "Intro"
 tags:
     - javascript
-    - ajax
-    - asynchronous js
+    - gatsby
+    - blog
 ---
 3min read...
 

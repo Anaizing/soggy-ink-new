@@ -5,8 +5,8 @@ date: "13/01/2018"
 category: "React"
 tags:
     - javascript
-    - ajax
-    - asynchronous js
+    - react
+    - intro
 ---
 ##### 3 min read... 
 

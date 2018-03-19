@@ -5,8 +5,8 @@ date: "10/01/2018"
 category: "React"
 tags:
     - javascript
-    - ajax
-    - asynchronous js
+    - react
+    - components
 ---
 ##### 3min read... 4 Mainstream ways
 

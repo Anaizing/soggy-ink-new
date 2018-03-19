@@ -5,8 +5,9 @@ date: "05/01/2018"
 category: "javascript"
 tags:
     - javascript
-    - ajax
-    - asynchronous js
+    - methods
+    - data structures
+    - fundamentals
 ---
 ##### 10min read... The Why/Mutator functions/Iterator functions.
 

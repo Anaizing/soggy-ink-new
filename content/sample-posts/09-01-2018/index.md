@@ -5,8 +5,8 @@ date: "09/01/2018"
 category: "javascript"
 tags:
     - javascript
-    - ajax
-    - asynchronous js
+    - terminology
+    - fundamentals
 ---
 ##### 10min read... JS Terminology
 
