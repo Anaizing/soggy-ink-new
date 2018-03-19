@@ -25,6 +25,7 @@ Example time`!`
 var request = new XMLHttpRequest();
 
 ```
+
 * first thing we need to do is create an instance of this object. Note you'd need something more robust for this to work on older browsers.
 
 * once you have an instance of the object the next thing to do is to handle the `onreadyStatechange` event. Which awkwardly fires up multiple times for one given request
@@ -41,28 +42,41 @@ request.onreadystatechange = function() {
 }
 
 ```
+
 * so the first thing we have to do is check this 
+
 ```js
  if (request.readyState === 4) {
 ```
+
 `readyState` line, to see if its equal to 4, meaning the request is done.
+
 * when the request is done, we then need to make sure that it was successful from an HTTPs perspective, and so we look at the status code...
+
 ```js
 if (request.status >= 200 && request.status <= 299)
 ```
+
 ...and we make sure is in the range of 200-299, since all the 200's mean that something was successful.
+
 * from there we can do whatever we want to, to manipulate the text that we've received
+
 ```js
 console.dir(JSON.parse(request.responseText));
 ```
+
 so in this case we parse it into JSON
+
 * if there's a problem it takes a lil more sleuthing to figure out what the error was, so here we'll just log out a generic error message.
 
 All of this code and set up hasn't accomplished anything yet. We still haven't made a request, to do so we need to call `.open()` on the request passing in the method and the url.
+
 ```js
 request.open('GET', 'http://soggy-ink.surge.sh/', true);
 ```
+
 but that only initializes the request it doesnt actually make the request. To do that, we need one more line of code
+
 ```js
 request.send();
 ```
@@ -84,12 +98,12 @@ request.open('GET', 'http://soggy-ink.surge.sh/', true);
 request.send();
 
 ```
+
 But now that we have fetch we wont have to use this anymore, we'll be able to use something that is native in the browser.
 
 See ya
 
 Resources
-
 
 [Building Offline Web Apps with Service Worker- By Nik Molnar ](https://app.pluralsight.com/library/courses/building-offline-web-apps-service-worker/table-of-contents)
 

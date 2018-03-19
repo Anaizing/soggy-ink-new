@@ -9,7 +9,6 @@ tags:
     - api
     - javascript
     - pwa
-
 ---
 
 ![puppy fetching leaf](https://images.unsplash.com/photo-1503514731955-7f665dde1225?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a404d2e19cc961dda62daff26b766ae9&auto=format&fit=crop&w=1050&q=80)
