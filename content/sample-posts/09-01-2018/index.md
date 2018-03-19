@@ -1,6 +1,6 @@
 ---
 title: "JS Terminology-Day 6"
-cover: "https://images.unsplash.com/photo-1511548774318-563182fe8d03?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=226688553251c9261fa28de062b96b40&auto=format&fit=crop&w=750&q=80"
+cover: "https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=1500&q=80"
 date: "09/01/2018"
 category: "javascript"
 tags:

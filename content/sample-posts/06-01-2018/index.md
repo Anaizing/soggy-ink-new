@@ -1,6 +1,6 @@
 ---
 title: "Coercion Part1-Day 3"
-cover: "https://images.unsplash.com/photo-1511548774318-563182fe8d03?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=226688553251c9261fa28de062b96b40&auto=format&fit=crop&w=750&q=80"
+cover: "https://images.unsplash.com/photo-1489533119213-66a5cd877091?dpr=1&auto=format&fit=crop&w=767&h=511&q=60&cs=tinysrgb"
 date: "06/01/2018"
 category: "javascript"
 tags:

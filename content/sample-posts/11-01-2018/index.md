@@ -1,6 +1,6 @@
 ---
 title: "Ways to Style React Components-Day 8"
-cover: "https://images.unsplash.com/photo-1511548774318-563182fe8d03?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=226688553251c9261fa28de062b96b40&auto=format&fit=crop&w=750&q=80"
+cover: "https://images.unsplash.com/photo-1485841890310-6a055c88698a?auto=format&fit=crop&w=1050&q=80"
 date: "11/01/2018"
 category: "React"
 tags:

@@ -1,6 +1,6 @@
 ---
 title: "Still here-Day 2"
-cover: "https://images.unsplash.com/photo-1511548774318-563182fe8d03?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=226688553251c9261fa28de062b96b40&auto=format&fit=crop&w=750&q=80"
+cover: "https://images.unsplash.com/photo-1486335223442-a034129506f6?auto=format&fit=crop&w=750&q=80"
 date: "05/01/2018"
 category: "javascript"
 tags:

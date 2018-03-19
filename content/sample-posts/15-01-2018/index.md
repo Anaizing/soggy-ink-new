@@ -1,6 +1,6 @@
 ---
 title: "React Resources -Day 12"
-cover: "https://images.unsplash.com/photo-1511548774318-563182fe8d03?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=226688553251c9261fa28de062b96b40&auto=format&fit=crop&w=750&q=80"
+cover: "https://images.unsplash.com/photo-1502902020937-d77a834d5e5f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=11d17c871138721e2d9f5704a71c3c6b&auto=format&fit=crop&w=1350&q=80"
 date: "15/01/2018"
 category: "react"
 tags:
