@@ -165,4 +165,4 @@ Resources
 
 _Soggy Ink- By Anai Araya_<br>
 Follow me [@Anaizing](https://twitter.com/Anaizing) <br>
-[ANAIZING.DESIGN](https://anaizing.design/)
+[ANAIZING.DESIGN](http://anaizing.design/)
