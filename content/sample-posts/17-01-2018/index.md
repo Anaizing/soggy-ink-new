@@ -1,7 +1,7 @@
 ---
 title: "Promises again -Day 14"
 cover: "https://images.unsplash.com/photo-1484506169663-9e54114d6eee?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a82e747bcec08b7a525f9feaf3f08127&auto=format&fit=crop&w=750&q=80"
-date: "22/01/2018"
+date: "17/01/2018"
 category: "javascript"
 tags:
     - javascript
