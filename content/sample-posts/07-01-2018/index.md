@@ -2,7 +2,7 @@
 title: "WTF is Declarative?-Day 4"
 cover: "https://images.unsplash.com/photo-1511548774318-563182fe8d03?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=226688553251c9261fa28de062b96b40&auto=format&fit=crop&w=750&q=80"
 date: "07/01/2018"
-category: "javascript"
+category: "React"
 tags:
     - javascript
     - ajax
