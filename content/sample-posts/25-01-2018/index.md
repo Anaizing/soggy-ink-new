@@ -4,8 +4,9 @@ cover: "https://images.unsplash.com/photo-1494888427482-242d32babc0b?ixlib=rb-0.
 date: "25/01/2018"
 category: "PWA"
 tags:
-    - hi
-    - hello
+    - pwa
+    - api
+    - service workers
 
 ---
 

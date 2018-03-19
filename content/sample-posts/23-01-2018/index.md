@@ -5,6 +5,7 @@ date: "23/01/2018"
 category: "PWA"
 tags:
     - javascript
+    - promises
     - ajax
     - asynchronous js
 ---

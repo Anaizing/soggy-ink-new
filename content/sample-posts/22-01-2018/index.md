@@ -5,8 +5,8 @@ date: "22/01/2018"
 category: "javascript"
 tags:
     - javascript
-    - ajax
-    - asynchronous js
+    - design patterns
+    - module
 ---
 
 #### 15 min read...
