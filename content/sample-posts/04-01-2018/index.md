@@ -1,5 +1,5 @@
 ---
-title: "She's Alive! -Day 1"
+title: "She's Alive -Day 1"
 cover: "https://images.unsplash.com/photo-1503925802536-c9451dcd87b5?auto=format&fit=crop&w=1050&q=80"
 date: "04/01/2018"
 category: "Intro"

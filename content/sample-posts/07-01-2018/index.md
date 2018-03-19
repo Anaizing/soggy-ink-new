@@ -1,5 +1,5 @@
 ---
-title: "WTF is Declarative?-Day 4"
+title: "WTF is Declarative? -Day 4"
 cover: "https://cdn-images-1.medium.com/max/675/1*oi8WLwC2u0EEI1j9uKmwWg.png"
 date: "07/01/2018"
 category: "React"
