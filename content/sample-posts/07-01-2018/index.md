@@ -1,7 +1,12 @@
 ---
-path: "/Day-4"
-date: "2018-01-07T17:12:33.962Z"
 title: "WTF is Declarative?-Day 4"
+cover: "https://images.unsplash.com/photo-1511548774318-563182fe8d03?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=226688553251c9261fa28de062b96b40&auto=format&fit=crop&w=750&q=80"
+date: "16/01/2018"
+category: "javascript"
+tags:
+    - javascript
+    - ajax
+    - asynchronous js
 ---
 ##### 3min read... Imperative vs Declarative
 
