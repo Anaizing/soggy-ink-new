@@ -3,7 +3,7 @@ module.exports = {
   siteTitle: "Soggy Ink", // Site title.
   siteTitleAlt: "Soggy Ink", // Alternative site title for SEO.
   siteLogo: "/logos/logo-1024.png", // Logo used for SEO and manifest.
-  siteUrl: "https://vagr9k.github.io", // Domain of your website without pathPrefix.
+  siteUrl: "https://soggy-ink.surge.sh", // Domain of your website without pathPrefix.
   pathPrefix: "/soggy-ink", // Prefixes all links. For cases when deployed to example.github.io/gatsby-material-starter/.
   fixedFooter: false, // Whether the footer component is fixed, i.e. always visible
   siteDescription:

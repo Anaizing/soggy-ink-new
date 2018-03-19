@@ -8,9 +8,22 @@ html {
 
 body {
     margin: 0;
+    
 }
 
-@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Cinzel+Decorative|Raleway:400,500,700|Material+Icons');
+p, li {
+    
+    font-family: 'Raleway' !important;
+    font-weight: 700;
+    color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    
+    font-family: 'Cinzel Decorative' !important;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Cinzel+Decorative|Raleway|Julius+Sans+One:400,500,700|Material+Icons');
 @import '~react-md/src/scss/react-md';
 @import 'theme.scss';
 
