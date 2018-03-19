@@ -9,8 +9,6 @@ tags:
     - stack
 ---
 
-#### 20 min read...
-
 ![rock stack](https://images.unsplash.com/photo-1506718468845-7578aa47670b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=058c56f9d18bea58d07c1934e5cd52bd&auto=format&fit=crop&w=750&q=80)
 
 Lets do some more data structures, today its all about Stacks. If it sounds familiar you either know what you're doing and probably shouldnt be reading this or you've heard that Javascript has a stack, either way you're doing allright. WooOOooooo  nerd life forever`!`

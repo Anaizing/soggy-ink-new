@@ -8,7 +8,6 @@ tags:
     - promise
     - fundamentals
 ---
-##### 10min read... Promises in Js/Terminology
 
 ![three locks on a bridge](https://images.unsplash.com/photo-1439566773766-06344d7ee69a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0d0dc1dcda75ac7ec5e0f669babecfec&auto=format&fit=crop&w=753&q=80)
 

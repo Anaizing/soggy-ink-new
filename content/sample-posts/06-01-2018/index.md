@@ -8,7 +8,6 @@ tags:
     - coercion
     - fundamentals
 ---
-##### 15min read... Coercion in JS/Primitive types/Natives
 
 ![a mug saying begin](https://images.unsplash.com/photo-1489533119213-66a5cd877091?dpr=1&auto=format&fit=crop&w=767&h=511&q=60&cs=tinysrgb)
 

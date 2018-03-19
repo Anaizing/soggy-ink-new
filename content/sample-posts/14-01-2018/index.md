@@ -9,7 +9,6 @@ tags:
     - design patterns
 ---
 
-##### 5 min read... What are Design Patterns?/Anti-Patterns
 
 ![a chest of files](https://images.unsplash.com/photo-1505528638251-3ef301e4988e?auto=format&fit=crop&w=750&q=80)
 

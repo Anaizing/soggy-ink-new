@@ -9,8 +9,6 @@ tags:
     - data structures
     - fundamentals
 ---
-##### 10min read... The Why/Mutator functions/Iterator functions.
-
 # The Why
 
 Welcome to day 2. So I should probably mention the reason I'm actually writing this blog. Aside from the obvious and unoriginal self indulgence that comes with the territory, I've decided, like many before me, to embark on the [#100DaysOfCode challenge](https://medium.freecodecamp.org/join-the-100daysofcode-556ddb4579e4). For those of you that are not familiar, the rules are pretty simple; you must code for at least an hour everyday for 100 days, you must tweet daily about your progress and thoughts, you must support other people doing the challenge.

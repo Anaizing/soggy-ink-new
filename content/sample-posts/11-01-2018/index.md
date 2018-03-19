@@ -9,7 +9,6 @@ tags:
     - components
     - styles
 ---
-##### 10min read... Options/Plain CSS/Compiled languages that enhance CSS/Inline Styles/CSS Modules/CSS in JS libraries
 
 ![5 colorful cacti](https://images.unsplash.com/photo-1485841890310-6a055c88698a?auto=format&fit=crop&w=1050&q=80)
 

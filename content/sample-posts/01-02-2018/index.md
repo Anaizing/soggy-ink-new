@@ -9,8 +9,6 @@ tags:
     - react
 ---
 
-## 15 min read...
-
 ![a spoon full of 100s and 1000s](https://images.unsplash.com/photo-1516478379578-ea8bea43365f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f484d00625536efcf544aa8f799a84b5&auto=format&fit=crop&w=1050&q=80)
 
 # Basic Intro to React

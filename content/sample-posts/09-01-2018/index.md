@@ -8,8 +8,6 @@ tags:
     - terminology
     - fundamentals
 ---
-##### 10min read... JS Terminology
-
 
 # JS Terminology
 

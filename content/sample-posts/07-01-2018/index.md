@@ -8,8 +8,6 @@ tags:
     - react
     - declarative
 ---
-##### 3min read... Imperative vs Declarative
-
 
 ![react logo](https://cdn-images-1.medium.com/max/675/1*oi8WLwC2u0EEI1j9uKmwWg.png)
 

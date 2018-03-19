@@ -8,7 +8,6 @@ tags:
     - promises
     - fundamentals
 ---
-##### 15 min read...
 
 ![hang loose hand gesture](https://images.unsplash.com/photo-1484506169663-9e54114d6eee?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a82e747bcec08b7a525f9feaf3f08127&auto=format&fit=crop&w=750&q=80)
 

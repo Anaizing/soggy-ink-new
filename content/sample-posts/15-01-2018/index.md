@@ -7,8 +7,6 @@ tags:
     - javascript
     - react
 ---
-##### 5 min read... or the rest of your day(up to you)
-
 ![a couple jumping](https://images.unsplash.com/photo-1502902020937-d77a834d5e5f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=11d17c871138721e2d9f5704a71c3c6b&auto=format&fit=crop&w=1350&q=80)
 
 # Awesome React Resources

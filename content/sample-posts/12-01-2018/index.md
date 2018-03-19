@@ -8,7 +8,6 @@ tags:
     - continuous intergration
     - testing
 ---
-##### 20 min read... Continuous Intergration/
 
 ![a chest of files](https://images.unsplash.com/photo-1463527882365-18201e85a091?auto=format&fit=crop&w=819&q=80)
 

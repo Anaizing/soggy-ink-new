@@ -1,7 +1,8 @@
 ---
 title: "Exports and Imports-Day 30"
-cover: "https://images.unsplash.com/photo-1503925802536-c9451dcd87b5?auto=format&fit=crop&w=1050&q=80"
+cover: "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=79a523f15041949bfc3c91c1e9f723c2&auto=format&fit=crop&w=1500&q=80"
 date: "02/02/2018"
+day: "01"
 category: "javascript"
 tags:
     - javascript
@@ -11,9 +12,7 @@ tags:
     - import
 ---
 
-## 15 min read...
-
-![]()
+![export crates](https://images.unsplash.com/photo-1494412651409-8963ce7935a7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=79a523f15041949bfc3c91c1e9f723c2&auto=format&fit=crop&w=1500&q=80)
 
 As we have [covered before](http://soggy-ink.surge.sh/Day-19), with ES6 we can write modular code. This refers to the way we structure our work and link file/components together, a way we can split up our code onto multiple files.
 

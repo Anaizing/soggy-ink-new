@@ -9,8 +9,6 @@ tags:
     - fundamentals
 ---
 
-#### 15 min read...
-
 ![giraffe sticking tongue out](https://images.unsplash.com/photo-1470073755300-6ec0f9cfa01c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=644f6ac0c5c1568cf26610d934e14635&auto=format&fit=crop&w=755&q=80)
 Just to be clear the only empty promise is the one I made earlier about not making any more blog posts on promises. Ha`!`
 

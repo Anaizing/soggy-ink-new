@@ -8,7 +8,6 @@ tags:
     - gatsby
     - blog
 ---
-3min read...
 
 ![corpse rising from the sea](https://images.unsplash.com/photo-1503925802536-c9451dcd87b5?auto=format&fit=crop&w=1050&q=80)
 ###### _Photo by Daniel Jensen on Unsplash_

@@ -7,8 +7,7 @@ tags:
     - javascript
     - react
     - intro
----
-##### 3 min read... 
+--- 
 
 ![girl looking at heart shaped light](https://images.unsplash.com/photo-1500395235658-f87dff62cbf3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=caf592fe79ef67c69701deafb3fc17aa&auto=format&fit=crop&w=750&q=80)
 
