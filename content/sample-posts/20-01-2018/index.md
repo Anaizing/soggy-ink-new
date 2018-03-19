@@ -1,6 +1,6 @@
 ---
 title: "Stack it! -Day 17"
-cover: "https://images.unsplash.com/photo-1483213097419-365e22f0f258?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e88da1d97339e40683ada077dd34b86a&auto=format&fit=crop&w=750&q=80"
+cover: "https://images.unsplash.com/photo-1506718468845-7578aa47670b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=058c56f9d18bea58d07c1934e5cd52bd&auto=format&fit=crop&w=750&q=80"
 date: "22/01/2018"
 category: "javascript"
 tags:

@@ -1,6 +1,6 @@
 ---
 title: "A List ADT -Day 16"
-cover: "https://images.unsplash.com/photo-1483213097419-365e22f0f258?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e88da1d97339e40683ada077dd34b86a&auto=format&fit=crop&w=750&q=80"
+cover: "https://images.unsplash.com/photo-1461411250718-4b4a5c0b270a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7acd92157777d244d620a2f87d05f38d&auto=format&fit=crop&w=737&q=80"
 date: "22/01/2018"
 category: "javascript"
 tags:
