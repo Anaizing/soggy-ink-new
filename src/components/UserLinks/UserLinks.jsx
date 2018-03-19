@@ -14,6 +14,7 @@ class UserLinks extends Component {
         key={link.label}
         iconClassName={link.iconClassName}
         href={link.url}
+        target="_blank"
       >
         {labeled ? link.label : ""}
       </Button>
