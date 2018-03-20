@@ -16,7 +16,7 @@ pre[class*="language-"] {
     -ms-hyphens: none;
     hyphens: none;
     background: #443c53;
-    color: #c5c8c6;
+    color: #fff;
 }
 
 pre[class*="language-"]::-moz-selection,
@@ -24,7 +24,7 @@ pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection,
 code[class*="language-"] ::-moz-selection {
     text-shadow: none;
-    background: #b4b7b4;
+    background: #fff;
 }
 
 pre[class*="language-"]::selection,
@@ -54,7 +54,7 @@ pre[class*="language-"] {
 }
 
 .token.punctuation {
-    color: #fff;
+    color: #c5c8c6;
 }
 
 .token.namespace {
@@ -64,15 +64,15 @@ pre[class*="language-"] {
 .token.operator,
 .token.boolean,
 .token.number {
-    color: yellow;
+    color: rgb(241, 238, 22);
 }
 
 .token.property {
-    color: rgb(238, 164, 28);
+    color: rgb(241, 138, 42);
 }
 
 .token.tag {
-    color: lime;
+    color: rgb(43, 245, 43);
 }
 
 .token.string {
