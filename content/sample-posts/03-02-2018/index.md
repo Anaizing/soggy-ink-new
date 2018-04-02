@@ -152,6 +152,10 @@ img {
 ```
 Here we rotate the element 90 degrees ant-clockwise, then move it up 200px, which is now technically right, since we rotated it first, then we're making it twice as big on both axisesesesss.
 
+# Transitions
+
+Transitions are the simplest way to do a bit of animation on a page, what they do is transition an element from one state to another, in a certain way over a certain amount of time.
+
 
 
 
