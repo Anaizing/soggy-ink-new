@@ -61,6 +61,56 @@ img {
 ```
 So this will move left then up or NorthWest.
 
+## Scale
+
+What scale does is just that, scales the element, makes it bigger or smaller. Again we can use scaleX or scaleY or just scale and pass in two values.
+
+```css
+img {
+    transform: scaleX(1);
+}
+```
+This does nothing, here we are telling it we want a 1:1 scale so it doesnt change.
+
+Above 1 is going to strtch it and below 1 is going to shrink it
+```css
+img {
+    transform: scaleX(3);
+}
+```
+This is going to make it 3 times as big along the x axis.
+
+```css
+img {
+    transform: scaleX(0.5);
+}
+```
+This will make it twice as small again along the x axis
+
+And we can do the same along the Y axis
+```css
+img {
+    transform: scaleY(0.5);
+}
+```
+This is making the element half its size along the Y axis
+
+Now if we type scale and pass in one number it will scale that amount in both the x and y axis
+```css
+img {
+    transform: scale(4);
+}
+```
+Here the element is 4 times as big on both X and Y axis
+
+If we pass in two numbers, it refers to the x first and the y second
+```css
+img {
+    transform: scale(3, 0.5);
+}
+```
+Now the element is 3times as long and half as tall as it was initially.
+
 
 
 
