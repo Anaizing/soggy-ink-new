@@ -131,7 +131,26 @@ img {
 ```
 Here it rotates 90 degrees ant-clockwise
 
+## mash moves
 
+But to really have some fun we can use more than one of these properties at once. They can be chained together like soo...
+
+```css
+img {
+    transform: rotateZ(-90deg) translateY(200px);
+}
+```
+Here we rotate the element 90 degrees ant-clockwise, then move it up 200px, which is now technically right, since we rotated it first.
+
+The order of the chaining matters. Had we switched the last two properties around the element would be in a different place.
+
+We can then also make it bigger by adding scale at the end, this works sequentially
+```css
+img {
+    transform: rotateZ(-90deg) translateY(200px) scale(2);
+}
+```
+Here we rotate the element 90 degrees ant-clockwise, then move it up 200px, which is now technically right, since we rotated it first, then we're making it twice as big on both axisesesesss.
 
 
 
