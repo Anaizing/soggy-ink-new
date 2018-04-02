@@ -111,7 +111,25 @@ img {
 ```
 Now the element is 3times as long and half as tall as it was initially.
 
+## Rotate
 
+With Rotate we can use XY or Z axis. However if we rotate along the X or the Y axis, its a bit like a roast pig on a stick, as in that is the direction of the rotation so you wont be able to see it as clearly as the z rotations. Only a small variation in the height of the element. Rotating via the z index will show a clockwise or anti-clockwise rotation.
+
+rotate takes a value of `deg` representing degrees, and it can be a positive value (clockwise) or a negative value (anti-clockwise), the point is anchored from the middle of the element.
+
+```css
+img {
+    transform: rotateZ(90deg);
+}
+```
+Here the element rotates 90 degrees clockwise
+
+```css
+img {
+    transform: rotateZ(-90deg);
+}
+```
+Here it rotates 90 degrees ant-clockwise
 
 
 
