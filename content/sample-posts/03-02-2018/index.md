@@ -173,6 +173,7 @@ You can create many different very cool animations with transitions to mimic nat
 You can combine more than one transition, controlling a separate action or elements at the same time. You can also alter the timing of transitions to compliment the desired movement or movements.
 
 Here we have a circle with an `on hover` state.
+
 ```css
 .circle {
   width: 100px;
@@ -183,7 +184,7 @@ Here we have a circle with an `on hover` state.
   color: white;
   border-radius: 50px;
   cursor: pointer;
-  transition: 1s, transform 1s 1s linear;
+  transition: 1s, transform 0.3s 1s linear;
 }
 
 .circle:hover {
@@ -192,7 +193,16 @@ Here we have a circle with an `on hover` state.
 }
 ```
 
+Transitions control the flow from the first state to the second state, to make the transition fluid. 
+
+* Here we are controlling the background color switch with a transition legth of 1 second and after that 
+* we are controlling the 360 degrees transform with the length of time it takes to spin being 0.3 seconds
+* and the second parameter we passed in to the transform is called a `delay` and in this case its 1 second, which means it'll wait for the color to change, followed by
+* the timing function in this case we are using the linear, meaning it doesnt speed up or slow down.
+
 <div style="width:100%;height:0px;position:relative;padding-bottom:56.250%;"><iframe src="https://streamable.com/s/sdicx/cxiqsl" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
+
+kjsdhkasjh
 
 
 
