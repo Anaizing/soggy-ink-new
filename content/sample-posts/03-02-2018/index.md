@@ -200,9 +200,14 @@ Transitions control the flow from the first state to the second state, to make t
 * and the second parameter we passed in to the transform is called a `delay` and in this case its 1 second, which means it'll wait for the color to change, followed by
 * the timing function in this case we are using the linear, meaning it doesnt speed up or slow down.
 
-<div style="width:100%;height:0px;position:relative;padding-bottom:56.250%;"><iframe src="https://streamable.com/s/sdicx/cxiqsl" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
 
-so remember these are the parameters transitions can take
+
+<div style="width:100%;height:0px;position:relative;padding-bottom:96.992%;"><iframe src="https://streamable.com/s/1z87x/jljnsr" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
+
+<br>
+
+#### so remember these are the parameters transitions can take
+
 * just the time for a simple transition
 
 ```css
@@ -210,19 +215,25 @@ so remember these are the parameters transitions can take
     transition: 1s;
 }
 ```
+
 * the time and the delay
+
 ```css
 .element {
     transition: 1s 2s;
 }
 ```
+
 * the time, the delay and the timing function
+
 ```css
 .element {
     transition: 1s 2s cubic-bezier(1,2.3,.3,.5);
 }
 ```
+
 * control more than one at the same time by the time, the delay and the timing function
+
 ```css
 .element {
     transition: background 1s, transform 1s 2s cubic-bezier(1,2.3,.3,.5);
@@ -230,6 +241,42 @@ so remember these are the parameters transitions can take
 ```
 
 Now run wild!
+
+# Keyframes
+
+Keyframes are blocks by which we define our animations, you give them a name depending on the animation you create and then you can apply that particular motion/`keyframe` to different elements.
+
+We use a different a keyframe block for every type of animation we use on the page. In the following example we'll see how you can apply a drive animation to one element and later a wind animation to another, these are just random names and you can name your animations whatever you like.
+
+```css
+/*// ELEMENTS TO ANIMATE //*/
+.mario {
+  position: absolute;
+  top: -40px;
+  left: 0px;
+  animation-name: drive;
+  animation-duration: 3s; 
+}
+
+/*// KEYFRAMES //*/
+ @keyframes drive {
+   from{ transform: translateX(0)}
+   to{transform: translateX(500px)}
+ }
+```
+
+<div style="width:100%;height:0px;position:relative;padding-bottom:98.496%;"><iframe src="https://streamable.com/s/gbdlz/dtjmqu" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
+
+<br>
+
+* So here we are naming the keyframe drive and we are telling that animation to go `from` a point we have translated to, `to` another pooint we translate to along the x axis.
+
+* To activate this animation we must add, to out `.mario` element, a property defining which keyframe we want to use, in this case `drive`. 
+
+* As well as the length of time we'd like the animation to run for, in this case 3 seconds.
+
+
+
 
 
 
