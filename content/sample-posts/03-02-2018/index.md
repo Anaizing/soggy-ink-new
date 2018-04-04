@@ -302,7 +302,8 @@ For Mario, we'll use forward, what this does is it takes the last property state
 }
 ```
 
-But before you can see it lets also, change the starting point in our keyframe to 100px, and lets use the animation-fill-mode property value of `both` so it can animate from our new translate points on the x axis in without yanking on either end.
+* But before you can see it lets also, change the starting point in our keyframe to 100px, 
+* and lets use the animation-fill-mode property value of `both` so it can animate from our new translate points on the x axis in without yanking on either end.
 
 
 ```css
@@ -326,10 +327,14 @@ But before you can see it lets also, change the starting point in our keyframe t
 <div style="width:100%;height:0px;position:relative;padding-bottom:85.393%;"><iframe src="https://streamable.com/s/cig8s/msempq" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
 
 
-
+<br>
 
 
 Resources
+
+For more info on this really fun topic visit the link below.
+
+Happy coding`!!`
 
 [CSS Animations-by the Net Ninja](https://www.youtube.com/watch?v=PH35-BDak0M&index=2&list=PL4cUxeGkcC9iGYgmEd2dm3zAKzyCGDtM5)
 
