@@ -195,14 +195,43 @@ Here we have a circle with an `on hover` state.
 
 Transitions control the flow from the first state to the second state, to make the transition fluid. 
 
-* Here we are controlling the background color switch with a transition legth of 1 second and after that 
+* Here we are controlling the background color switch with a transition time legth of 1 second and after that 
 * we are controlling the 360 degrees transform with the length of time it takes to spin being 0.3 seconds
 * and the second parameter we passed in to the transform is called a `delay` and in this case its 1 second, which means it'll wait for the color to change, followed by
 * the timing function in this case we are using the linear, meaning it doesnt speed up or slow down.
 
 <div style="width:100%;height:0px;position:relative;padding-bottom:56.250%;"><iframe src="https://streamable.com/s/sdicx/cxiqsl" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
 
-kjsdhkasjh
+so remember these are the parameters transitions can take
+* just the time for a simple transition
+
+```css
+.element {
+    transition: 1s;
+}
+```
+* the time and the delay
+```css
+.element {
+    transition: 1s 2s;
+}
+```
+* the time, the delay and the timing function
+```css
+.element {
+    transition: 1s 2s cubic-bezier(1,2.3,.3,.5);
+}
+```
+* control more than one at the same time by the time, the delay and the timing function
+```css
+.element {
+    transition: background 1s, transform 1s 2s cubic-bezier(1,2.3,.3,.5);
+}
+```
+
+Now run wild!
+
+
 
 
 
