@@ -157,6 +157,43 @@ Here we rotate the element 90 degrees ant-clockwise, then move it up 200px, whic
 Transitions are the simplest way to do a bit of animation on a page, what they do is transition an element from one state to another, in a certain way over a certain amount of time.
 
 
+The certain way could be;
+
+* linear
+* ease
+* ease-in
+* ease-out
+* ease-in-out
+* cubic-bezier(n,n,n,n)
+
+The certain amount of time usually refers to seconds and or milliseconds, described as '0.something s'
+
+You can create many different very cool animations with transitions to mimic natural responsive flow within user interactions.
+
+You can combine more than one transition, controlling a separate action or elements at the same time. You can also alter the timing of transitions to compliment the desired movement or movements.
+
+Here we have a circle with an `on hover` state.
+```css
+.circle {
+  width: 100px;
+  padding: 50px 0;
+  line-height: 0;
+  margin: 60px auto;
+  background: pink;
+  color: white;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 1s, transform 1s 1s linear;
+}
+
+.circle:hover {
+  background-color: salmon;
+  transform: rotate(360deg);
+}
+```
+
+<div style="width:100%;height:0px;position:relative;padding-bottom:56.250%;"><iframe src="https://streamable.com/s/sdicx/cxiqsl" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
+
 
 
 Resources
