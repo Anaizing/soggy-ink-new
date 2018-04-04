@@ -287,8 +287,43 @@ We use a different a keyframe block for every type of animation we use on the pa
 * none
 * unset
 
-For Mario, we'll use forward, what this does is it takes the last property stated in your keyframe animation and applies it as a finishing point for your elemen's animation, so that it doiesnt bounce back to its original spot. making it look much more natural
+For Mario, we'll use forward, what this does is it takes the last property stated in your keyframe animation and applies it as a finishing point for your elemen's animation, so that it doiesnt bounce back to its original spot. making it look much more natural, coming to a stop at the end of the animation.
 
+
+```css
+.mario {
+  position: absolute;
+  top: -40px;
+  left: 0px;
+  animation-name: drive;
+  animation-duration: 3s; 
+  animation-fill-mode: forward;
+  animation-delay: 2s;
+}
+```
+
+But before you can see it lets also, change the starting point in our keyframe to 100px, and lets use the animation-fill-mode property value of `both` so it can animate from our new translate points on the x axis in without yanking on either end.
+
+
+```css
+.mario {
+  position: absolute;
+  top: -40px;
+  left: 0px;
+  animation-name: drive;
+  animation-duration: 3s; 
+  animation-fill-mode: both;
+  animation-delay: 2s;
+}
+
+/*// KEYFRAMES //*/
+ @keyframes drive {
+   from{ transform: translateX(200px)}
+   to{transform: translateX(500px)}
+ }
+```
+
+<div style="width:100%;height:0px;position:relative;padding-bottom:85.393%;"><iframe src="https://streamable.com/s/cig8s/msempq" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
 
 
 
