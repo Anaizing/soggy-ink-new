@@ -275,7 +275,19 @@ We use a different a keyframe block for every type of animation we use on the pa
 
 * As well as the length of time we'd like the animation to run for, in this case 3 seconds.
 
+# animation fill mode
 
+`animation-fill-mode` can take a range of property values.
+
+* forwards
+* backwards
+* both
+* inherit
+* initial
+* none
+* unset
+
+For Mario, we'll use forward, what this does is it takes the last property stated in your keyframe animation and applies it as a finishing point for your elemen's animation, so that it doiesnt bounce back to its original spot. making it look much more natural
 
 
 
