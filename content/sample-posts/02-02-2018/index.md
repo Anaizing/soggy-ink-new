@@ -7,7 +7,7 @@ category: "javascript"
 tags:
     - javascript
     - fundamentals
-    - dev env
+    - devenv
 ---
 
 ![building foundations](https://images.unsplash.com/photo-1519488968503-724f3ff337df?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=799255929af2c534a2ef55074522a3d6&auto=format&fit=crop&w=1400&q=80)
@@ -35,6 +35,7 @@ trim_trailing_whitespace = false
 ```
 <br>
 You may need to add editorconfig to your editor for it to work.
+<br>
 4. Create a package.json file at the root of your project, like this one...
 
 ```json
@@ -83,15 +84,21 @@ You may need to add editorconfig to your editor for it to work.
     "webpack-md5-hash": "0.0.6"
     }
 }
+
 ```
+
 5. run `npm i` aka `npm install`
+
 6. Install a security platform-this will check your npm packages for any dodgy ones.
+
 ```
 npm install -g nsp
 ```
 <br>
 you can then run it by running `nsp check` in the command line
+<br>
 7. Set up web server I'm using `express`. Add a `buildScripts` folder to the root and inside it a `srcServer.js` file. Here add...
+
 ```js
 var express = require('express')
 var path = require('path')
@@ -112,12 +119,27 @@ app.listen(port, function(err) {
   }
 })
 ```
+<br>
 
+8. Create a `src` folder at the root, inside it place a `index.html` file with the html boiler plate and a heading saying something so you can test its working. 
+<br>
+9. Then run express by calling the folder `srcServer.js` with node
 
-8.
-9.
-10.
-11.
+```
+node buildScripts/srcServer.js
+```
+<br>
+You should now see whatever h1 you made in port 3000
+10. Add localtunnel
+11. Add script to start dev env, in package.json inside scripts
+
+```json
+"start": "node buildScripts/srcServer.js"
+```
+now we start the environment with 
+```
+npm start
+```
 12.
 13.
 14.
