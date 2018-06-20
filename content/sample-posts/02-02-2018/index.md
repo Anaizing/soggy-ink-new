@@ -128,20 +128,36 @@ app.listen(port, function(err) {
 ```
 node buildScripts/srcServer.js
 ```
+
 <br>
 You should now see whatever h1 you made in port 3000
+<br>
 10. Add localtunnel
+<br>
 11. Add script to start dev env, in package.json inside scripts
 
 ```json
 "start": "node buildScripts/srcServer.js"
 ```
+<br>
 now we start the environment with 
 ```
 npm start
 ```
-12.
-13.
+<br>
+12. Put in a starting message for user. Create a file inside `buildScripts` called `startMessage.js` there add your message and color of choice...
+
+```js
+import chalk from 'chalk'
+
+console.log(chalk.green('Starting app in dev mode you cool cat'))
+
+
+```
+
+<br>
+
+13. Add a prestart script.
 14.
 
 
