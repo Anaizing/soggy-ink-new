@@ -252,7 +252,26 @@ export default {
 }
 
 ```
+21. Set up our developmenmt server to serve our webpack bundle. In the `srcServer.js` import `webpack` and `config` as well as a middleware function, the top of the file should look like this.
 
+```js
+import express from 'express'
+import path from 'path'
+import open from 'open'
+import webpack from 'webpack'
+import config from '../webpack.config.dev'
+
+const port = 3000;
+const app = express()
+const compiler = webpack(config)
+
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true,
+  publicPath: config.output.publicPath
+}))
+```
+
+* the rest of the file beneath this code will remain as it was.
 
 
 
