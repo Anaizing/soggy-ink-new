@@ -219,7 +219,42 @@ npm start -s
 
 * now the syntax for the srcServer can be updated to ES6 imports etc.
 
-20.
+20. Configure webpack. Create a `webpack.config.dev.js` file in the root of the project, in it place this code.
+
+```js
+import webpack from 'webpack'
+import path from 'path'
+
+export default {
+  mode: 'development',
+  devtool: 'inline-source-map',
+  entry: [
+    path.resolve(__dirname, 'src/index')
+  ],
+  target: 'web',
+  output: {
+    path: path.resolve(__dirname, 'src'),
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  plugins: [
+    new webpack.LoaderOptionsPlugin({
+      debug: true,
+      noInfo: false,
+    })
+  ],
+  module: {
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader'] },
+      { test: /\.css$/, loaders: ['style-loader', 'css-loader'] }
+    ]
+  }
+}
+
+```
+
+
+
 
 
 [Building a javascript dev environment-By Cory House](https://www.pluralsight.com/courses/javascript-development-environment)
