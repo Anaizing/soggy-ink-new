@@ -273,7 +273,44 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 * the rest of the file beneath this code will remain as it was.
 
+22. Create an app entry point. Create `index.js` in the root of our `src` directory. Here we can add some js to test webpack is bundling our code, eg.
 
+```js
+import numeral from 'numeral'
+
+const courseValue = numeral(1000).format('$0,0.00')
+console.log(`I would pay ${courseValue} for this awesome course`)
+```
+
+23. Reference the `index.js` file in the `index.html` file, in the body.
+
+```html
+<script src="bundle.js"></script>
+```
+
+Now if we run npm start and start our dev tools open network, and refresh we should see bundle getting sent down, and if we scroll about a million hours we will find a transpiled version of our index.js code.
+
+24. Handling CSS with webpack. We've already defined a css loader in the webpack config file. now just add a `index.css` file in the `src` root of the project and place in it some styles to test
+
+```css
+body
+{
+  font-family: sans-serif;
+}
+table th {
+  padding: 5px;
+}
+
+```
+25. In the `index.js` file import the `index.css` at the top.
+
+```js
+import './index.css'
+```
+
+* now if we start our app and open dev tools, in bundle search for padding and there you will see a transpiled/bundled version of our css.
+
+26.
 
 
 [Building a javascript dev environment-By Cory House](https://www.pluralsight.com/courses/javascript-development-environment)
