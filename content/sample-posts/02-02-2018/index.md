@@ -184,7 +184,20 @@ console.log(chalk.green('Starting app in dev mode you cool cat'))
 "open:src": "node buildScripts/srcServer.js"
 ```
 
-17. 
+* to start the app without all the extra noise just run the start command with -s at the end
+
+```
+npm start -s
+```
+
+17. Create a script that runs localtunnel and starts up a web server at the same time. Change the share script to be called  localtunnel and make a new share script that runs open:src as well as localtunnel
+
+```json
+"localtunnel": "lt --port 3000 --subdomain loveit",
+"share": "npm-run-all --parallel open:src localtunnel"
+```
+
+18. Configure a transpiler, Babel.
 
 
 [Building a javascript dev environment-By Cory House](https://www.pluralsight.com/courses/javascript-development-environment)
