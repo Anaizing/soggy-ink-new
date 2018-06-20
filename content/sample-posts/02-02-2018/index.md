@@ -157,8 +157,34 @@ console.log(chalk.green('Starting app in dev mode you cool cat'))
 
 <br>
 
-13. Add a prestart script.
-14.
+13. Add a prestart script in `package.json` above the start script, to run the start message we created.
+
+```json
+  "prestart": "node buildScripts/startMessage.js"
+```
+
+* npm support convention based `pre` and `post` hooks, so any scripts that you prefix with the word `pre`, will run before the script with the same name. And any scripts that prefix with the word `post` will run after the script with the same name.
+
+14. Create a script to run the node security check. Place it after the start script.
+
+```json
+"security-check": "nsp check"
+```
+
+15. Create a script to run localtunnel, under `security-check`.
+
+```json
+"share": "lt --port 3000 --subdomain loveit"
+```
+
+16. Use a package called `npm-run-all` to run concurrent tasks in `--parallel`. Lets run the security check at the same time as we start the web server, simply change the name of the start script to `open:src` and make a new start script wich includes the `security-check` and the `open:src`
+
+```json
+"start": "npm-run-all --parallel security-check open:src",
+"open:src": "node buildScripts/srcServer.js"
+```
+
+17. 
 
 
 [Building a javascript dev environment-By Cory House](https://www.pluralsight.com/courses/javascript-development-environment)
