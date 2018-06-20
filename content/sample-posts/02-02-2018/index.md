@@ -197,7 +197,29 @@ npm start -s
 "share": "npm-run-all --parallel open:src localtunnel"
 ```
 
-18. Configure a transpiler, Babel.
+18. Configure a transpiler, Babel. Create a folder in the root of the project called `.babelrc`, in it place this code...
+
+
+```json
+{
+  "presets": [
+    "latest"
+  ]
+}
+
+```
+
+19. Call `babel-node` on the prestart script, the open:src script to finish configuration.
+
+```json
+"open:src": "babel-node buildScripts/srcServer.js",
+//...
+"prestart": "babel-node buildScripts/startMessage.js"
+```
+
+* now the syntax for the srcServer can be updated to ES6 imports etc.
+
+20.
 
 
 [Building a javascript dev environment-By Cory House](https://www.pluralsight.com/courses/javascript-development-environment)
