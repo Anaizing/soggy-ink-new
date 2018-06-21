@@ -416,7 +416,38 @@ describe('Our first test', () => {
 
 * now run `npm test` and you should see 1passing
 
-34. 
+34. import jsdom and fs to the index.test.js file and add the following code
+
+```js
+import jsdom from 'jsdom'
+import fs from 'fs'
+
+describe('index.html', () => {
+  it('should say HELLO', (done) => {
+    const index = fs.readFileSync('./src/index.html', "utf-8")
+    jsdom.env(index, function(err, window) {
+      const h1 = window.document.getElementsByTagName('h1')[0]
+      expect(h1.innerHTML).to.equal("HELLO WORLD!")
+      done()
+      window.close()
+    })
+  })
+})
+```
+
+35. Automate test watch. Add a script under test
+
+```json
+"test:watch": "npm run test -- --watch"
+```
+
+also call it from the start script so it looks like this
+
+```json
+"start": "npm-run-all --parallel security-check open:src lint:watch test:watch"
+```
+
+36. Add TravisCI.
 
 [Building a javascript dev environment-By Cory House](https://www.pluralsight.com/courses/javascript-development-environment)
 
