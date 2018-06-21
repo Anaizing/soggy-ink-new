@@ -346,6 +346,45 @@ import './index.css'
 
 * `esw` is the executable for ESLint watch, and we are passing it the list of files we'd like it to watch. Also make sure to dissable any linting pluggins you may have in your code editor, so they dont override the ones you put in.
 
+* run 
+
+```
+npm run lint
+```
+
+29. Remove warnings from any exceptions you may need the console.log placed with either of these in the corresponding files.
+
+```
+// eslint-disable-line no-console
+/* eslint-disable no-console */
+```
+
+30. Create a separate script to watch our files. under the `lint` script add
+
+```json
+"lint:watch": "npm run lint -- --watch"
+```
+
+* now run 
+
+```
+npm run lint:watch
+```
+
+31. Add the `lint:watch` task to the end of the start script, so it runs in parallel
+
+* now if we type `npm start -s` we...
+  * get our start message
+  * get our security check
+  * run webpack
+  * start our development web server
+  * open the app in our default browser
+  * lint our files
+  * re-run lint on our files anytime we hit save
+  * followed by a loud mic drop
+
+  32. 
+
 
 [Building a javascript dev environment-By Cory House](https://www.pluralsight.com/courses/javascript-development-environment)
 
