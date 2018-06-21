@@ -392,7 +392,7 @@ npm run lint:watch
 require('babel-register')()
 
 // Disable webpack features that mocha doesnt understand.
-require.extensions('.css') = function() {}
+require.extensions['.css'] = function() {}
   ```
 
 33. Add test script.
@@ -404,8 +404,19 @@ require.extensions('.css') = function() {}
 34. add a file in src called `index.test.js` put this in it
 
 ```js
+import {expect} from 'chai'
+
+describe('Our first test', () => {
+  it('should pass', () => {
+    expect(true).to.equal(true)
+  })
+})
 
 ```
+
+* now run `npm test` and you should see 1passing
+
+34. 
 
 [Building a javascript dev environment-By Cory House](https://www.pluralsight.com/courses/javascript-development-environment)
 
