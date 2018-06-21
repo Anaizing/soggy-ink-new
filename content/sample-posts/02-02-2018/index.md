@@ -310,7 +310,41 @@ import './index.css'
 
 * now if we start our app and open dev tools, in bundle search for padding and there you will see a transpiled/bundled version of our css.
 
-26.
+26. You have enabled `inline-source-maps` in the webpack config, so you can throw the `debugger` keyword anywhere in your code which creates a breakpoint so you can debug your code, and be able to inspect it in devtools as you wrote it. Have a play around.
+
+27. Set up ESLint. create a `eslintrc.json` file in the root of the project. In it place this code
+
+```json
+
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "no-console": 1
+  }
+}
+```
+
+28. Add file watching functionality to ESLint. In `package.json` add a script under `open:src`
+
+```json
+"lint": "esw webpack.config.* src buildScripts"
+```
+
+* `esw` is the executable for ESLint watch, and we are passing it the list of files we'd like it to watch. Also make sure to dissable any linting pluggins you may have in your code editor, so they dont override the ones you put in.
 
 
 [Building a javascript dev environment-By Cory House](https://www.pluralsight.com/courses/javascript-development-environment)
