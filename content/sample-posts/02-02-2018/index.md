@@ -383,8 +383,29 @@ npm run lint:watch
   * re-run lint on our files anytime we hit save
   * followed by a loud mic drop
 
-  32. 
+  32. Configure mocha. Add a file inside buildScripts, call it `testSetup.js` inside it place
 
+  ```js
+//this file is not transpiled, so must use CommonJS and ES5
+
+// Register babel to transpile before our tests run
+require('babel-register')()
+
+// Disable webpack features that mocha doesnt understand.
+require.extensions('.css') = function() {}
+  ```
+
+33. Add test script.
+
+  ```json
+"test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\""
+  ```
+
+34. add a file in src called `index.test.js` put this in it
+
+```js
+
+```
 
 [Building a javascript dev environment-By Cory House](https://www.pluralsight.com/courses/javascript-development-environment)
 
