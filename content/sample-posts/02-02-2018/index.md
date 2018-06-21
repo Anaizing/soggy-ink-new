@@ -526,6 +526,90 @@ function onError(error) {
 }
 ```
 
+42. Add a table to the `index.html` file.
+
+```html
+  <h1>Users</h1>
+    <table>
+      <thead>
+        <th>&nbsp;</th>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+      </thead>
+      <tbody id="users">
+
+      </tbody>
+    </table>
+```
+
+43. change the code in the index.js file for this
+
+```js
+import {getUsers} from './api/userApi'
+
+// * Populate table of users using via API call
+getUsers().then(result => {
+  let usersBody = ""
+
+  result.forEach(user => {
+    usersBody += `<tr>
+      <td><a href="#" data-id="${user.id}" class="deleteUser">Delete</a></td>
+      <td>${user.id}</td>
+      <td>${user.firstName}</td>
+      <td>${user.lastName}</td>
+      <td>${user.email}</td>
+      </tr>`
+  })
+
+  global.document.getElementById('users').innerHTML = usersBody
+})
+```
+
+44. Build a mock http. Create a file called `mockDataSchema.js` inside buildScripts. In there place this code
+
+```js
+export const schema = {
+  "type": "object",
+  "properties": {
+    "users": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "unique": true,
+            "minimum": 1
+          },
+          "firstName": {
+            "type": "string",
+            "faker": "name.firstName"
+          },
+          "lastName": {
+            "type": "string",
+            "faker": "name.lastName"
+          },
+          "email": {
+            "type": "string",
+            "faker": "internet.email"
+          }
+        },
+        "required": ["id", "firstName", "lastName", "email"]
+      }
+    }
+  },
+  "required": ["users"]
+};
+```
+
+
+
+
+
 
 [Building a javascript dev environment-By Cory House](https://www.pluralsight.com/courses/javascript-development-environment)
 
