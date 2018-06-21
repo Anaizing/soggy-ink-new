@@ -447,7 +447,63 @@ also call it from the start script so it looks like this
 "start": "npm-run-all --parallel security-check open:src lint:watch test:watch"
 ```
 
-36. Add TravisCI.
+36. Add TravisCI. Go to the [Travis website](https://travis-ci.org/) sign in with your github account, find your repo and turn it on. Create a `.travis.yml` file in the root of your project and add the following code
+
+```yml
+language: node_js
+node_js:
+- "8"
+- "9"
+
+```
+
+37. Then call `git add .` and commit changes also, `push` your commits to the repo and if you go to the travisCI page you will see the CI running. Easy peacy!
+
+38. Add AppVeyor which covers window users. Add an `appveyor.yml` place this in it
+
+```yml
+# Test against this version of Node.js
+environment:
+  matrix:
+  # node.js
+  - nodejs_version: "6"
+
+# Install scripts. (runs after repo cloning)
+install:
+  # Get the latest stable version of Node.js or io.js
+  - ps: Install-Product node $env:nodejs_version
+  # install modules
+  - npm install
+
+# Post-install test scripts.
+test_script:
+  # Output useful info for debugging.
+  - node --version
+  - npm --version
+  # run tests
+  - npm test
+
+# Don't actually build.
+build: off
+```
+
+39. Go to the [AppVeyor](https://www.appveyor.com/) website, login via your github account, select the project you're on.
+* again you need to add and commit all files then push them up to github, then you can go back to AppVeyor, click on latest and you'll see your project in action.
+
+40. Set up `fetch`. Open srcServer and add a new route beneath the current `app.get` already there...
+
+```js
+app.get('/users', function(req, res) {
+  // ! hard coding for simplicity. pretend its a real data base
+  res.json([
+    {"id": 1, "firstName": "Bec", "lastName":"Hunt", "email": "hunt@gmail.com" },
+    {"id": 1, "firstName": "Alex", "lastName":"Sanra", "email": "alex@gmail.com" },
+    {"id": 1, "firstName": "Jess", "lastName":"Beling", "email": "jess@gmail.com" }
+  ])
+})
+
+```
+
 
 [Building a javascript dev environment-By Cory House](https://www.pluralsight.com/courses/javascript-development-environment)
 
