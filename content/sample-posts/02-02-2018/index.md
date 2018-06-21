@@ -504,6 +504,28 @@ app.get('/users', function(req, res) {
 
 ```
 
+41. Create a folder called `api` in the src folder, and inside it, a file called `userApi.js` and paste this in
+
+```js
+import 'whatwg-fetch'
+
+export function getUsers() {
+  return get('users')
+}
+
+function get(url) {
+  return fetch(url).then(onSuccess, onError)
+}
+
+function onSuccess(response) {
+  return response.json()
+}
+
+function onError(error) {
+  console.log(error) //eslint-disable-line no-console
+}
+```
+
 
 [Building a javascript dev environment-By Cory House](https://www.pluralsight.com/courses/javascript-development-environment)
 
