@@ -606,6 +606,137 @@ export const schema = {
 };
 ```
 
+45. Generate Mock Data. Create new file in buildScripts called `generateMockData.js` inside place this code
+
+```js
+/* This script generates mock data for local development.
+   This way you don't have to point to an actual API,
+   but you can enjoy realistic, but randomized data,
+   and rapid page loads due to local, static data.
+ */
+
+/* eslint-disable no-console */
+
+import jsf from 'json-schema-faker';
+import {schema} from './mockDataSchema';
+import fs from 'fs';
+import chalk from 'chalk';
+
+const json = JSON.stringify(jsf(schema));
+
+fs.writeFile("./src/api/db.json", json, function (err) {
+  if (err) {
+    return console.log(chalk.red(err));
+  } else {
+    console.log(chalk.green("Mock data generated."));
+  }
+});
+```
+
+46. create a script to generate mock data under test:watch
+
+```json
+"generate-mock-data": "babel-node buildScripts/generateMockData"
+```
+* now run `npm generate-mock-data` in the terminal and you should see in green, "Mock data generated", as well as a new db.json file created in the api folder.
+
+46. Create a new script under the last one.
+
+```json
+"start-mockapi": "json-server --watch src/api/db.json --port 3001"
+```
+
+* now run `npm start-mockapi` and voala! They even have the sweetest emoji
+
+47. Create a new script above the previous one, called 
+
+```json
+"prestart-mockapi": "npm run generate-mock-data"
+```
+
+* also add `start-mockapi` to the start script
+
+48. We need the app to inteligently point to proper baseURL in each environment. So create a file called `baseUrl.js` in the `api` folder, put this in it.
+
+```js
+export default function getBaseUrl() {
+  const inDevelopment = window.location.hostname === 'localhost'
+  return inDevelopment ? 'http://localhost:3001/' : '/'
+}
+```
+
+49. Import `getBaseUrl` to the `userApi` file and alter it to look like this
+
+```js
+import 'whatwg-fetch'
+import getBaseUrl from './baseUrl'
+
+const baseUrl = getBaseUrl()
+
+export function getUsers() {
+  return get('users')
+}
+
+function get(url) {
+  return fetch(baseUrl + url).then(onSuccess, onError)
+}
+
+function onSuccess(response) {
+  return response.json()
+}
+
+function onError(error) {
+  console.log(error) //eslint-disable-line no-console
+}
+
+```
+
+50. Activate delete button. In `userApi` add an export function to `deleteUser` under `getUsers`
+
+```js
+export function deleteUser(id) {
+  return del(`users/${id}`)
+}
+```
+
+and under the get(url) function place this function
+
+```js
+
+// ! Cant call func delete since its a reserved word
+function del(url) {
+  const request = new Request(baseUrl + url, {
+    method: 'DELETE'
+  })
+  return fetch(request).then(onSuccess, onError)
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
