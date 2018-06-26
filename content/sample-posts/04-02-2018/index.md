@@ -5,7 +5,6 @@ date: "04/02/2018"
 category: "npm"
 tags:
     - scripts
-    - npm
     - liveshare
 ---
 

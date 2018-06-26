@@ -7,7 +7,6 @@ tags:
     - javascript
     - source maps
     - fundamentals
-    - devtools
     - webpack
 ---
 
