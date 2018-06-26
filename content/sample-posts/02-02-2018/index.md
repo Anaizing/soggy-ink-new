@@ -761,7 +761,22 @@ function del(url) {
 
 53. Inside the webpack production config change the devtool setting to `source-map`. This makes sure we can still see our original code in the browser even though its been minified and bundled.
 
-54. Change the output path to a new folder called `dist`
+54. Change the output path to a new folder called `dist`. You still need to build this, and the file will now look like this
+
+```js
+//...
+  target: 'web',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+
+//...
+```
+
+55. ------- WORK IN PROGRESS -----------
+------------------------------------------
 
 
 
