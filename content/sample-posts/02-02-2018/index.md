@@ -759,6 +759,10 @@ function del(url) {
 
 52. Webpack configuration and minification. Make a copy of the webpack.config and change the name to `webpack.config.prod.js`
 
+53. Inside the webpack production config change the devtool setting to `source-map`. This makes sure we can still see our original code in the browser even though its been minified and bundled.
+
+54. Change the output path to a new folder called `dist`
+
 
 
 
