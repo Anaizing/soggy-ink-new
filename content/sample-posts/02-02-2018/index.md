@@ -648,6 +648,31 @@ fs.writeFile("./src/api/db.json", json, function (err) {
 
 * now run `npm start-mockapi` and voala! They even have the sweetest emoji
 
+
+
+
+
+
+
+
+
+
+
+// TODO: testing!! and change numbers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 47. Create a new script above the previous one, called 
 
 ```json
@@ -712,7 +737,27 @@ function del(url) {
 }
 ```
 
+51. Activate the Delete buttons. Add the following code to your inde3x.js file inside the getUsers promise
 
+```js
+
+  const deleteLinks = global.document.getElementsByClassName('deleteUser');
+
+  // Must use array.from to create a real array from a DOM collection
+  // getElementsByClassname only returns an "array like" object
+  Array.from(deleteLinks, link => {
+    link.onclick = function (event) {
+      const element = event.target;
+      event.preventDefault();
+      deleteUser(element.attributes["data-id"].value);
+      const row = element.parentNode.parentNode;
+      row.parentNode.removeChild(row);
+    }
+  })
+
+```
+
+52. Webpack configuration and minification. Make a copy of the webpack.config and change the name to `webpack.config.prod.js`
 
 
 
