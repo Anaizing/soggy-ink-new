@@ -384,8 +384,9 @@ npm run lint:watch
   * followed by a loud mic drop
 
   32. Configure mocha. Add a file inside buildScripts, call it `testSetup.js` inside it place
+<br>
 
-  ```js
+```js
 //this file is not transpiled, so must use CommonJS and ES5
 
 // Register babel to transpile before our tests run
@@ -393,7 +394,7 @@ require('babel-register')()
 
 // Disable webpack features that mocha doesnt understand.
 require.extensions['.css'] = function() {}
-  ```
+```
 
 33. Add test script.
 
@@ -657,8 +658,10 @@ fs.writeFile("./src/api/db.json", json, function (err) {
 
 
 
-
+-------------WORK IN PROGRESS---------------
+// IGNORE THIS
 // TODO: testing!! and change numbers
+--------------------------------------------
 
 
 
@@ -776,6 +779,7 @@ function del(url) {
 ```
 
 55. ------- WORK IN PROGRESS -----------
+//...TO BE CONTINUED
 ------------------------------------------
 
 
