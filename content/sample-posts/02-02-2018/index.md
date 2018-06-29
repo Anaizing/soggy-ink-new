@@ -762,7 +762,18 @@ function del(url) {
 
 52. Webpack configuration and minification. Make a copy of the webpack.config and change the name to `webpack.config.prod.js`
 
-53. Inside the webpack production config change the devtool setting to `source-map`. This makes sure we can still see our original code in the browser even though its been minified and bundled.
+53. Inside the webpack production config change the devtool setting to `source-map`. This makes sure we can still see our original code in the browser even though its been minified and bundled. Should now look like this...
+
+```js
+//...
+export default {
+  mode: 'development',
+  devtool: 'source-map',
+  entry: [
+    path.resolve(__dirname, 'src/index')
+  ],
+  //...
+```
 
 54. Change the output path to a new folder called `dist`. You still need to build this, and the file will now look like this
 
@@ -778,7 +789,28 @@ function del(url) {
 //...
 ```
 
-55. 
+55. Add two webpack plugins
+
+```js
+//...
+  plugins: [
+    new webpack.LoaderOptionsPlugin({
+      debug: true,
+      noInfo: false,
+    }),
+
+    // * Eliminate duplicate packages when generating bundle
+    new webpack.optimize.DedupePlugin(),
+
+    // * Minify JS
+    new webpack.optimize.UglifyJsPlugin()
+  ],
+  //...
+```
+
+56. Make sure you `import webpack from 'webpack'` at the top of the file
+
+
 //------- WORK IN PROGRESS -----------
 //...TO BE CONTINUED
 //------------------------------------------
