@@ -848,10 +848,12 @@ webpack(webpackConfig).run((err, stats) => {
   return 0
 })
 
-
-
 ```
 
+
+58. Create a new file inside buildScripts called `distServer.js` and copy and paste in it the logic from srcServer
+
+59.
 //------- WORK IN PROGRESS -----------
 //...TO BE CONTINUED
 //------------------------------------------
