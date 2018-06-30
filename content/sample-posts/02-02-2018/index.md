@@ -892,6 +892,42 @@ app.listen(port, function (err) {
 })
 
 ```
+59. Edit the baseUrl file inside the `api`folder  to look like this...
+
+```js
+export default function getBaseUrl() {
+  return getQueryStringParameterByName('useMockApi') ? 'http://localhost:3001/' : '/'
+}
+
+function getQueryStringParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+```
+
+60. Add production build npm scripts. Underneath `start-mockapi`, in your package.json place the following 4 scripts
+
+```json
+//...
+    "clean-dist": "rimraf ./dist && mkdir dist",
+    "prebuild": "npm-run-all clean-dist test lint",
+    "build": "babel-node buildScripts/build.js",
+    "postbuild": "babel-node buildScripts/distServer.js"
+//...
+```
+61. Remove this script from index.html, since we are now dynamically building a bundle.js
+
+```html
+  <script src="bundle.js"></script>
+```
+
+
 
 
 //------- WORK IN PROGRESS -----------
