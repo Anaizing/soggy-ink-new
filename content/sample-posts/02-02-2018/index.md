@@ -927,8 +927,23 @@ function getQueryStringParameterByName(name, url) {
   <script src="bundle.js"></script>
 ```
 
+62. In `webpack.config.prod.js` add this import 
 
+```js
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+```
 
+63. Then inside pligins add the following
+
+```js
+    // * Create HTML file that includes reference to bundled JS
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      inject: true
+    }),
+```
+
+64. Copy what you just did over to the `webpack.config.dev 
 
 //------- WORK IN PROGRESS -----------
 //...TO BE CONTINUED
