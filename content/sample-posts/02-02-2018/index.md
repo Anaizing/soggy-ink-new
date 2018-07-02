@@ -1034,7 +1034,26 @@ filename: '[name].[chunkhash].js'
 
 Now if you run the build you should be able to see in your terminal, webpack has printed two separate chunks aka bundles, main.js and vendor.js and the size has been split between the two, its also generated mapping files for both. And in the webpage if you now open source you can see that both main.js and vendor.js are referenced. And if you look at the network tab you can also see both being requested.
 
-70. Cache busting
+70. Cache busting. Add this import atthe top of the webpack prod file
+
+```js
+import WebpackMd5Hash from 'webpack-md5-hash'
+```
+
+71. Add the hash to your plugins
+
+```js
+// Hash the files using MD5 so that their names change when the content changes.
+     new WebpackMd5Hash()
+```
+
+Note we've already updated our filename format to update the hash that webpack generates by adding
+
+```js
+filename: '[name].[chunkhash].js'
+```
+
+Now if we run the build you can see that our filenames will have a hashes placed in the middle of them. And since we are using htmlwebpackconfig, if we open index.html we can see that the references were dynamically written for us.
 
 //------- WORK IN PROGRESS -----------
 //...TO BE CONTINUED
