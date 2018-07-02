@@ -1055,31 +1055,88 @@ filename: '[name].[chunkhash].js'
 
 Now if we run the build you can see that our filenames will have a hashes placed in the middle of them. And since we are using htmlwebpackconfig, if we open index.html we can see that the references were dynamically written for us.
 
-72. Configure webpack to generate a separate css file for the production build. import this into the prod file
+72. Configure webpack to generate a separate css file for the production build. 
 
-```js
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
+72.a install these 3 npm packages
+```
+npm install --save--dev uglifyjs-webpack-plugin
 ```
 
-73. Add the plugin.
-
-```js
-// Generate an external css file with a hash in the filename
-new ExtractTextPlugin('[name].[md5:contenthash:hex:20].css'),
- 	 
+```
+npm install --save--dev mini-css-extract-plugin
 ```
 
-74. Update the css loader so that it will call the extract text plugin
+```
+npm install --save--dev optimize-css-assets-webpack-plugin
+```
+
+72.b import this into the prod file
+
+```js
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
+
+```
+
+73. Add an entry point 
+
+```js
+entry: {
+    vendor: path.resolve(__dirname, 'src/vendor'),
+    main: path.resolve(__dirname, 'src/index'),
+    // talking about this one underneath
+    styles: path.resolve(__dirname, 'src/index.css')
+  },
+```
+74. To the Optimization add a minimizer with the new plugins
+
+```js
+optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all'
+        }
+      }
+    },
+    // talking about the one under this comment
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCssAssetsPlugin({})
+    ]
+  },
+```
+
+75. to plugins add the other plugin you imported
+
+```js
+new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    }),
+
+```
+
+76. Change the module rules to...
 
 ```js
 module: {
-    rules: [
-      { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader'] },
-      { test: /\.css$/, loader: ExtractTextPlugin.extract('css?sourceMap') }
-    ]
+     rules: [
+     {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
+     {test: /\.css$/, use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]}
+     ]
   }
 ```
-
 
 //------- WORK IN PROGRESS -----------
 //...TO BE CONTINUED
