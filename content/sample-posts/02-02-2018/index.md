@@ -1032,6 +1032,10 @@ import fetch from 'whatwg-fetch'
 filename: '[name].[chunkhash].js'
 ```
 
+Now if you run the build you should be able to see in your terminal, webpack has printed two separate chunks aka bundles, main.js and vendor.js and the size has been split between the two, its also generated mapping files for both. And in the webpage if you now open source you can see that both main.js and vendor.js are referenced. And if you look at the network tab you can also see both being requested.
+
+70. Cache busting
+
 //------- WORK IN PROGRESS -----------
 //...TO BE CONTINUED
 //------------------------------------------
