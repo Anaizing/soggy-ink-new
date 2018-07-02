@@ -933,7 +933,7 @@ function getQueryStringParameterByName(name, url) {
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 ```
 
-63. Then inside pligins add the following
+63. Then inside plugins add the following
 
 ```js
     // * Create HTML file that includes reference to bundled JS
@@ -943,7 +943,40 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
     }),
 ```
 
-64. Copy what you just did over to the `webpack.config.dev 
+64. Copy what you just did in steps 62 and 63 over to the `webpack.config.dev` file. This allows webpack to handle our html in both our dev and production environment.
+
+<br>
+
+To check its running correctly in production run
+
+```
+npm run build -s
+```
+
+If you inspect devtools and open the network tab, refresh, then look up the bundle.js file you will see the file size to around 3.7K instead of the actual size around 12K which webpack printed to your terminal when you ran the build.
+
+65. Configure our html webpack plugin to minify our html. In the `webpack.config.prod.js`, inside our `new HtmlWebpackPlugin()` under the template and above the inject, add `minify`
+
+```js
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true
+      },
+      inject: true
+    })
+```
+
+Now you can run the build and see the html minified, by right clicking on web page and clicking on `open source`
 
 //------- WORK IN PROGRESS -----------
 //...TO BE CONTINUED
