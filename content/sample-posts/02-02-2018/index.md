@@ -1055,6 +1055,32 @@ filename: '[name].[chunkhash].js'
 
 Now if we run the build you can see that our filenames will have a hashes placed in the middle of them. And since we are using htmlwebpackconfig, if we open index.html we can see that the references were dynamically written for us.
 
+72. Configure webpack to generate a separate css file for the production build. import this into the prod file
+
+```js
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+```
+
+73. Add the plugin.
+
+```js
+// Generate an external css file with a hash in the filename
+new ExtractTextPlugin('[name].[md5:contenthash:hex:20].css'),
+ 	 
+```
+
+74. Update the css loader so that it will call the extract text plugin
+
+```js
+module: {
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader'] },
+      { test: /\.css$/, loader: ExtractTextPlugin.extract('css?sourceMap') }
+    ]
+  }
+```
+
+
 //------- WORK IN PROGRESS -----------
 //...TO BE CONTINUED
 //------------------------------------------
