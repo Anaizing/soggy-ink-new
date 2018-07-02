@@ -978,6 +978,60 @@ If you inspect devtools and open the network tab, refresh, then look up the bund
 
 Now you can run the build and see the html minified, by right clicking on web page and clicking on `open source`
 
+66. Bundle splitting. In the `webpack.config.prod` file change the entry from an array to an object and add the vendor path, to look like this instead
+
+```js
+  entry: {
+    vendor: path.resolve(__dirname, 'src/vendor'),
+    main: path.resolve(__dirname, 'src/index')
+}
+```
+
+67. Create the vendor file in the src folder `vendor.js`, inside it place this
+
+```js
+
+/* This file contains references to the vendor libraries
+ we're using in this project. This is used by webpack
+ in the production build only*. A separate bundle for vendor
+ code is useful since it's unlikely to change as often
+ as the application's code. So all the libraries we reference
+ here will be written to vendor.js so they can be
+ cached until one of them change. So basically, this avoids
+ customers having to download a huge JS file anytime a line
+ of code changes. They only have to download vendor.js when
+ a vendor library changes which should be less frequent.
+ Any files that aren't referenced here will be bundled into
+ main.js for the production build.
+ */
+
+/* eslint-disable no-unused-vars */
+
+import fetch from 'whatwg-fetch'
+```
+
+68. Go to the webpack prod file and above plugins add optimization.splitchunks like this
+
+```js
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all'
+        }
+      }
+    }
+  },
+```
+
+69. Now that we're generating multiple bundles we cannot hardcode the filename so lets change that to 
+
+```js
+filename: '[name].[chunkhash].js'
+```
+
 //------- WORK IN PROGRESS -----------
 //...TO BE CONTINUED
 //------------------------------------------
