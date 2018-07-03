@@ -1294,7 +1294,11 @@ First take the script they give you and paste it at the very top of your index.h
 <script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
 <!-- END TRACKJS -->
 ```
-Then run the build and  paste step 2 in the console, to see that its working go to their website and you shpould see the error in trackjs
+Then run the build and  paste step 2 in the console, to see that its working go to their website and you shpould see the error in trackjs, and if you click on it you get all this information
+
+![first error log](https://scontent.fsyd1-1.fna.fbcdn.net/v/t1.0-9/36542601_10160471221305117_5135121658545176576_o.jpg?_nc_cat=0&oh=63e2a1d86b35ab93305ea1717bdf4194&oe=5BB0705D)
+
+
 
 
 //------- WORK IN PROGRESS -----------
