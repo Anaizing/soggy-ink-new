@@ -1290,13 +1290,61 @@ First take the script they give you and paste it at the very top of your index.h
 
 ```html
 <!-- BEGIN TRACKJS -->
-<script type="text/javascript">window._trackJs = { token: 'ed8c0c6c26c34230880e445257f80271' };</script>
-<script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
+<script type="text/javascript">window._trackJs = { token: 'INSERT YOUR TOKEN HERE' };</script>
+<script type="text/javascript" src="https://cdn.trackjs.com/releases/cu/tracker.js"></script>
 <!-- END TRACKJS -->
 ```
 Then run the build and  paste step 2 in the console, to see that its working go to their website and you shpould see the error in trackjs, and if you click on it you get all this information
 
 ![first error log](https://scontent.fsyd1-1.fna.fbcdn.net/v/t1.0-9/36542601_10160471221305117_5135121658545176576_o.jpg?_nc_cat=0&oh=63e2a1d86b35ab93305ea1717bdf4194&oe=5BB0705D)
+
+78. Adding conditionals to your html. This is so the code we just pasted into our html from trackjs only runs in our production build and not in our dev env.
+
+Htmlwebpack plugin supports a number of different templating languages out of the box including jade, ejs, underscore, handlebars and html loader, and if you dont specify a loader then it defaults to embeded js aka ejs, you can read about the ejs syntax [here](http://www.embeddedjs.com/).
+
+<br>
+
+Store the trackjs TOKEN you were given on their website in the `webpack.config.prod.js` inside the `htmlWebpackPlugin`, beneath inject.
+
+```js
+// Properties you define here are available in index.html
+// using htmlWebpackPlugin.options.varName
+trackJSToken: 'INSERT YOUR TOKEN HERE'
+```
+
+79. Using ejs, declare this section should only be rendered when we have a trackjs token defined in webpack config. Around the trackjs script place this
+
+```html
+<% if (htmlWebpackPlugin.options.trackJSToken) { %>
+
+  <!-- BEGIN TRACKJS -->
+  <script type="text/javascript">window._trackJs = { token: '<%=htmlWebpackPlugin.option.trackJSToken%>' };</script>
+  <script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
+  <!-- END TRACKJS -->
+
+<%  }  %>
+```
+
+and turn the token into a variable accesible via webpack, writen in the ejs syntax like you see above `token: '<%=htmlWebpackPlugin.option.trackJSToken%>'`
+
+then place an explanitory comment in your index html
+
+```html
+<!--
+  **NOTE:** This is a template for index.html.
+  It uses ejs and htmlWebpackPlugin to generate a different index.html for each environment.
+  htmlWebpackPlugin will dynamically add references to the scripts and styles that it bundles
+  to this file. The generated bundles have hash-based filenames,
+  so it's necessary to add the references dynamically.
+  For more info on ejs, see http://www.embeddedjs.com/.
+  For examples of using it with htmlWebpackPlugin,
+  see https://github.com/jaketrent/html-webpack-template/blob/master/index.ejs
+  -->
+```
+
+then run npm build to test its working acordingly.
+
+
 
 
 
