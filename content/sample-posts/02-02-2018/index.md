@@ -1138,6 +1138,165 @@ module: {
   }
 ```
 
+
+## webpack.config.prod.js
+
+So far the `webpack.config.prod.js`, should look like this
+
+```js
+import webpack from 'webpack'
+import path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import WebpackMd5Hash from 'webpack-md5-hash'
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
+
+export default {
+  mode: 'production',
+  resolve: {
+     extensions: ['*', '.js', '.jsx', '.json']
+     },
+  devtool: 'source-map',
+  entry: {
+    vendor: path.resolve(__dirname, 'src/vendor'),
+    main: path.resolve(__dirname, 'src/index'),
+    styles: path.resolve(__dirname, 'src/index.css')
+  },
+  target: 'web',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    filename: '[name].[chunkhash].js'
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all'
+        }
+      }
+    },
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCssAssetsPlugin({})
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    }),
+
+    // * Hash the files using MD5 so that their names change when the content changes.
+    new WebpackMd5Hash(),
+
+    // * Create HTML file that includes reference to bundled JS
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true
+      },
+      inject: true
+    }),
+
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false,
+      noInfo: false,
+    }),
+
+  ],
+  module: {
+     rules: [
+     {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
+     {test: /\.css$/, use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]}
+     ]
+  }
+}
+
+```
+
+## webpack.config.dev.js
+
+and the webpack dev file should look like this
+
+```js
+import webpack from 'webpack'
+import path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+
+export default {
+  mode: 'development',
+  resolve: {
+    extensions: ['*', '.js', '.jsx', '.json']
+  },
+  devtool: 'inline-source-map',
+  entry: [
+    path.resolve(__dirname, 'src/index')
+  ],
+  target: 'web',
+  output: {
+    path: path.resolve(__dirname, 'src'),
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  plugins: [
+    // * Create HTML file that includes reference to bundled JS
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      inject: true
+    }),
+
+    new webpack.LoaderOptionsPlugin({
+      minimize: false,
+      debug: true,
+      noInfo: false,
+    })
+  ],
+  module: {
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader'] },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] }
+    ]
+  }
+}
+
+```
+
+77. Error logging(tracking) with `Track.js`. Go to the [Trackjs website](https://trackjs.com/) and set up an account, once in there are two simple steps.
+
+![track js webpage](https://scontent.fsyd1-1.fna.fbcdn.net/v/t1.0-9/36583128_10160471201535117_1207487861511684096_o.jpg?_nc_cat=0&oh=b2247485bb7bf0a5e4a9145e1ad7ccb5&oe=5BA11EC0)
+
+First take the script they give you and paste it at the very top of your index.html file in the <head>
+
+```html
+<!-- BEGIN TRACKJS -->
+<script type="text/javascript">window._trackJs = { token: 'ed8c0c6c26c34230880e445257f80271' };</script>
+<script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
+<!-- END TRACKJS -->
+```
+Then run the build and  paste step 2 in the console, to see that its working go to their website and you shpould see the error in trackjs
+
+
 //------- WORK IN PROGRESS -----------
 //...TO BE CONTINUED
 //------------------------------------------
