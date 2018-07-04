@@ -1413,38 +1413,28 @@ app.get('/users', function (req, res) {
   ])
 })
 ```
-//------- WORK IN PROGRESS -----------
-//...TO BE CONTINUED
-//------------------------------------------
+
+89. Deploy static front end. Surge (a static web publisher for front end) is already installed globally, since it was in the package.json. So go to the package.json file nd under postbuild add this script
+
+```json
+"deploy": "surge ./dist"
+```
+
+90. Run the build, open dev tools, look in network and hover over users, you'll see we're making a call to heroku. with all this set up you can now run
+
+```
+npm run deploy
+```
+
+This will call surge, assigns a random domain, click enter, this will print out the url with said random domain, and if you paste it to the browser you should see the app live in production and using the heroku api for the data.
+
+THE END
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+For the full course with brilliant explinations and to give you an indepth understanding of why we did the things we did go to...
 [Building a javascript dev environment-By Cory House](https://www.pluralsight.com/courses/javascript-development-environment)
 
 _Soggy Ink- By Anai Araya_<br>
