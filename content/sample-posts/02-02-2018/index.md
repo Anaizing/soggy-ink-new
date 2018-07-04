@@ -1439,7 +1439,8 @@ THE END
 
 
 
-For the full course with brilliant explinations and to give you an indepth understanding of why we did the things we did go to...
+For the full course with brilliant explinations and to give you an indepth understanding of why we did the things we did go to
+
 [Building a javascript dev environment-By Cory House](https://www.pluralsight.com/courses/javascript-development-environment)
 
 _Soggy Ink- By Anai Araya_<br>
