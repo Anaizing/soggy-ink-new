@@ -1344,11 +1344,75 @@ then place an explanitory comment in your index html
 
 then run npm build to test its working acordingly.
 
+80. Automated API deploy via Heroku. Go to the [Heroku website](https://www.heroku.com/), create a free account with them and set your `primary development language` to `Node.js`. Once you're inside you should see this landing page, click on the Node.js icon, this will open the docs on how to get started with Heroku
 
+![heroku introduction landing page](https://scontent-syd2-1.xx.fbcdn.net/v/t1.0-9/36682145_10160475281450117_1531083659803623424_n.jpg?_nc_cat=0&oh=08463ee3cbf15a80ec934509ed0ee4bc&oe=5B9F00A1)
 
+81. Follow the heroku introduction and setup steps, and once you reach the third step `Prepare the app`, instead of using their app, go [here](https://github.com/Anaizing/js-dev-env-demo-api) and make sure you `fork` the repo so you have the right to work on it in heroku. And open the forked repo in your code editor. Run npm install.
 
+82. Change the name on package.json to point to your repo on github.
 
+83. Open the terminal and type
 
+```
+heroku login
+```
+
+Follow the login prompts
+
+84. Configure your app to work with heroku. Run
+
+```
+heroku create
+```
+This will give you a website, with a welcome message.
+
+85. In the command line run
+
+```
+heroku git:remote -a  calm-beach-81430
+```
+
+but change out `calm-beach-81430` for whatever name you were given
+
+86. then run 
+```
+git push heroku master
+```
+
+This will give you a url you paste to the browser, and if you go to it and add `/users` after it, you will see the json coming backwith our users, so we have our API now hosted in production. Any time we make any changes to our API we'll just commit our changes and run
+
+```
+git push heroku master
+```
+
+to push our changes up to heroku. Heroku will take the code from github and deploy it to our url.
+
+87. Jump back to our UI project aka js-dev-env. Go into the api folder and in it baseUrl.js change the url for production from the local to the one you created in heroku, should look similiar to this, except with your url.
+
+```js
+export default function getBaseUrl() {
+return getQueryStringParameterByName('useMockApi')
+  ? 'http://localhost:3001/'
+  : 'https://calm-beach-81430.herokuapp.com/'
+}
+```
+
+make sure to include the trailing / at the end.
+
+88. open distServer.js insde the buildScripts folder,remove this section
+
+```js
+
+app.get('/users', function (req, res) {
+  // ! hard coding for simplicity. pretend its a real data base
+  res.json([
+    { "id": 1, "firstName": "Bec", "lastName": "Hunt", "email": "hunt@gmail.com" },
+    { "id": 1, "firstName": "Alex", "lastName": "Sanra", "email": "alex@gmail.com" },
+    { "id": 1, "firstName": "Jess", "lastName": "Beling", "email": "jess@gmail.com" }
+  ])
+})
+```
 //------- WORK IN PROGRESS -----------
 //...TO BE CONTINUED
 //------------------------------------------
