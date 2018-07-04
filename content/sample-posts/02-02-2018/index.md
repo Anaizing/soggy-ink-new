@@ -1057,7 +1057,11 @@ Now if we run the build you can see that our filenames will have a hashes placed
 
 72. Configure webpack to generate a separate css file for the production build. 
 
-72.a install these 3 npm packages
+<br>
+
+72. a install these 3 npm packages
+
+
 ```
 npm install --save--dev uglifyjs-webpack-plugin
 ```
@@ -1069,14 +1073,15 @@ npm install --save--dev mini-css-extract-plugin
 ```
 npm install --save--dev optimize-css-assets-webpack-plugin
 ```
+<br> 
 
-72.b import this into the prod file
+72. b import this into the prod file
+
 
 ```js
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
-
 ```
 
 73. Add an entry point 
