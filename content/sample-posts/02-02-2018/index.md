@@ -448,6 +448,90 @@ also call it from the start script so it looks like this
 "start": "npm-run-all --parallel security-check open:src lint:watch test:watch"
 ```
 
+36. Testing setup. Create a new file in the buildScripts folder called `testSetup.js` in it place this logic
+
+```js
+//this file is not transpiled, so must use CommonJS and ES5
+
+// Register babel to transpile before our tests run
+require('babel-register')()
+
+// Disable webpack features that mocha doesnt understand.
+require.extensions['.css'] = function() {}
+
+
+```
+
+37. Add a test script. In package.json under the `share` script add this script
+
+```json
+"test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
+```
+
+Mocha offers a variety of reporters, this setting determines how the test output should display, here we've used the `progress` reporter because its clean and simple. Next we tell mocha to run the the testSetup scriptwe just set up, after its finished running that it will run any tests that it finds within our src directory and any sub directories. We define test files as any files that ends in `.test.js`
+
+<br>
+
+Now we can run 
+
+```
+npm test
+```
+to run mocha. It will fail saying it cannot find any test files, until you write some tests.
+
+38. Write a test. In the src folder create a new file called `index.test.js`.
+
+* Mocha doesnt come with an assertion lib, so we will use `chai`
+
+in this new file add this logic. Our first test.
+
+```js
+import {expect} from 'chai'
+
+describe('Our first test', () => {
+  it('should pass', () => {
+    expect(true).to.equal(true)
+  })
+})
+```
+Now run `npm test` and you should see 1 test passing.
+
+39. DOM testing.
+
+
+
+
+
+
+
+
+
+//-------------WORK IN PROGRESS---------------
+// IGNORE THIS
+// TODO: testing!! and change numbers
+//--------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 36. Add TravisCI. Go to the [Travis website](https://travis-ci.org/) sign in with your github account, find your repo and turn it on. Create a `.travis.yml` file in the root of your project and add the following code
 
 ```yml
@@ -648,32 +732,6 @@ fs.writeFile("./src/api/db.json", json, function (err) {
 ```
 
 * now run `npm start-mockapi` and voala! They even have the sweetest emoji
-
-
-
-
-
-
-
-
-
-
-//-------------WORK IN PROGRESS---------------
-// IGNORE THIS
-// TODO: testing!! and change numbers
-//--------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 47. Create a new script above the previous one, called 
