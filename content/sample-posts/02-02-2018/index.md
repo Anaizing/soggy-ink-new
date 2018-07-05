@@ -12,14 +12,19 @@ tags:
 
 ![building foundations](https://images.unsplash.com/photo-1519488968503-724f3ff337df?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=799255929af2c534a2ef55074522a3d6&auto=format&fit=crop&w=1400&q=80)
 
-# Steps to remember
+# Steps to remember 
+
+Lets build a javascript development environment with all the good stuff minus the javascript frameworks. Including  Package Mananagement, Bundling, Minification, Sourcemaps, Transpiling, Dynamic HTML Generation, Centralised HTTP, Mock API Framework, Component Libraries, Development Web Server, Linting, Automated Testing, Continuous Intergration, Automated Build, Automated Deployment, separating API and IU, Working Example app, Sharing work in progress, Error Tracking. Dont blink now.
+
+# Git started, add editor config
 
 1. Start a new repo on Github, make sure to add `node` to the `.gitignore`
 2. Clone said repo to your magical computer machine of choice. And open in your editor of choice (I'm in love with VS code)
 3. Create an `.editorconfig` file at the root of the project. Mine looks like this...
 
 ```
-# editorconfig.org
+
+## editorconfig.org
 root = true
 
 [*]
@@ -36,6 +41,9 @@ trim_trailing_whitespace = false
 <br>
 You may need to add editorconfig to your editor for it to work.
 <br>
+
+## package managment and security
+
 4. Create a package.json file at the root of your project, like this one...
 
 ```json
@@ -121,6 +129,8 @@ app.listen(port, function(err) {
 ```
 <br>
 
+## Development web servers
+
 8. Create a `src` folder at the root, inside it place a `index.html` file with the html boiler plate and a heading saying something so you can test its working. 
 <br>
 9. Then run express by calling the folder `srcServer.js` with node
@@ -171,6 +181,8 @@ console.log(chalk.green('Starting app in dev mode you cool cat'))
 "security-check": "nsp check"
 ```
 
+## share work in progress
+
 15. Create a script to run localtunnel, under `security-check`.
 
 ```json
@@ -197,6 +209,8 @@ npm start -s
 "share": "npm-run-all --parallel open:src localtunnel"
 ```
 
+## Configure transpiler
+
 18. Configure a transpiler, Babel. Create a folder in the root of the project called `.babelrc`, in it place this code...
 
 
@@ -218,6 +232,8 @@ npm start -s
 ```
 
 * now the syntax for the srcServer can be updated to ES6 imports etc.
+
+## Bundling
 
 20. Configure webpack. Create a `webpack.config.dev.js` file in the root of the project, in it place this code.
 
@@ -338,6 +354,8 @@ import './index.css'
 }
 ```
 
+## Linting
+
 28. Add file watching functionality to ESLint. In `package.json` add a script under `open:src`
 
 ```json
@@ -383,72 +401,9 @@ npm run lint:watch
   * re-run lint on our files anytime we hit save
   * followed by a loud mic drop
 
-  32. Configure mocha. Add a file inside buildScripts, call it `testSetup.js` inside it place
-<br>
+## testing and CI
 
-```js
-//this file is not transpiled, so must use CommonJS and ES5
-
-// Register babel to transpile before our tests run
-require('babel-register')()
-
-// Disable webpack features that mocha doesnt understand.
-require.extensions['.css'] = function() {}
-```
-
-33. Add test script.
-
-  ```json
-"test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\""
-  ```
-
-34. add a file in src called `index.test.js` put this in it
-
-```js
-import {expect} from 'chai'
-
-describe('Our first test', () => {
-  it('should pass', () => {
-    expect(true).to.equal(true)
-  })
-})
-
-```
-
-* now run `npm test` and you should see 1passing
-
-34. import jsdom and fs to the index.test.js file and add the following code
-
-```js
-import jsdom from 'jsdom'
-import fs from 'fs'
-
-describe('index.html', () => {
-  it('should say HELLO', (done) => {
-    const index = fs.readFileSync('./src/index.html', "utf-8")
-    jsdom.env(index, function(err, window) {
-      const h1 = window.document.getElementsByTagName('h1')[0]
-      expect(h1.innerHTML).to.equal("HELLO WORLD!")
-      done()
-      window.close()
-    })
-  })
-})
-```
-
-35. Automate test watch. Add a script under test
-
-```json
-"test:watch": "npm run test -- --watch"
-```
-
-also call it from the start script so it looks like this
-
-```json
-"start": "npm-run-all --parallel security-check open:src lint:watch test:watch"
-```
-
-36. Testing setup. Create a new file in the buildScripts folder called `testSetup.js` in it place this logic
+32. Testing setup. Create a new file in the buildScripts folder called `testSetup.js` in it place this logic
 
 ```js
 //this file is not transpiled, so must use CommonJS and ES5
@@ -462,7 +417,7 @@ require.extensions['.css'] = function() {}
 
 ```
 
-37. Add a test script. In package.json under the `share` script add this script
+33. Add a test script. In package.json under the `share` script add this script
 
 ```json
 "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
@@ -479,7 +434,7 @@ npm test
 ```
 to run mocha. It will fail saying it cannot find any test files, until you write some tests.
 
-38. Write a test. In the src folder create a new file called `index.test.js`.
+34. Write a test. In the src folder create a new file called `index.test.js`.
 
 * Mocha doesnt come with an assertion lib, so we will use `chai`
 
@@ -496,7 +451,7 @@ describe('Our first test', () => {
 ```
 Now run `npm test` and you should see 1 test passing.
 
-39. Watching tests. In the package.json, underneath the test script write a new script
+35. Watching tests. In the package.json, underneath the test script write a new script
 
 ```json
  "test:watch": "npm run test -- --watch",
@@ -510,7 +465,7 @@ then we also want to call this as part of our start script, so add the script to
 
 run `npm start -s` to see it all in action.
 
-40. Add Continuous Integration-TravisCI. Go to the [Travis website](https://travis-ci.org/) sign in with your github account, find your repo and turn it on. Create a `.travis.yml` file in the root of your project and add the following code
+36. Add Continuous Integration-TravisCI. Go to the [Travis website](https://travis-ci.org/) sign in with your github account, find your repo and turn it on. Create a `.travis.yml` file in the root of your project and add the following code
 
 ```yml
 language: node_js
@@ -520,9 +475,9 @@ node_js:
 
 ```
 
-41. Then call `git add .` and commit changes also, `push` your commits to the repo and if you go to the travisCI page you will see the CI running. Easy peacy!
+37. Then call `git add .` and commit changes also, `push` your commits to the repo and if you go to the travisCI page you will see the CI running. Easy peacy!
 
-42. Add AppVeyor which covers window users. Add an `appveyor.yml` place this in it
+38. Add AppVeyor which covers window users. Add an `appveyor.yml` place this in it
 
 ```yml
 # Test against this version of Node.js
@@ -550,10 +505,10 @@ test_script:
 build: off
 ```
 
-43. Go to the [AppVeyor](https://www.appveyor.com/) website, login via your github account, select the project you're on.
+39. Go to the [AppVeyor](https://www.appveyor.com/) website, login via your github account, select the project you're on.
 * again you need to add and commit all files then push them up to github, then you can go back to AppVeyor, click on latest and you'll see your project in action.
 
-44. Set up `fetch`. Open srcServer and add a new route beneath the current `app.get` already there...
+40. Set up `fetch`. Open srcServer and add a new route beneath the current `app.get` already there...
 
 ```js
 app.get('/users', function(req, res) {
@@ -567,7 +522,7 @@ app.get('/users', function(req, res) {
 
 ```
 
-45. Create a folder called `api` in the src folder, and inside it, a file called `userApi.js` and paste this in
+41. Create a folder called `api` in the src folder, and inside it, a file called `userApi.js` and paste this in
 
 ```js
 import 'whatwg-fetch'
@@ -589,7 +544,7 @@ function onError(error) {
 }
 ```
 
-46. Add a table to the `index.html` file.
+42. Add a table to the `index.html` file.
 
 ```html
   <h1>Users</h1>
@@ -607,7 +562,7 @@ function onError(error) {
     </table>
 ```
 
-47. change the code in the index.js file for this
+43. change the code in the index.js file for this
 
 ```js
 import {getUsers} from './api/userApi'
@@ -630,7 +585,7 @@ getUsers().then(result => {
 })
 ```
 
-48. Build a mock http. Create a file called `mockDataSchema.js` inside buildScripts. In there place this code
+44. Build a mock http. Create a file called `mockDataSchema.js` inside buildScripts. In there place this code
 
 ```js
 export const schema = {
@@ -669,7 +624,7 @@ export const schema = {
 };
 ```
 
-49. Generate Mock Data. Create new file in buildScripts called `generateMockData.js` inside place this code
+45. Generate Mock Data. Create new file in buildScripts called `generateMockData.js` inside place this code
 
 ```js
 /* This script generates mock data for local development.
@@ -696,14 +651,14 @@ fs.writeFile("./src/api/db.json", json, function (err) {
 });
 ```
 
-50. create a script to generate mock data under test:watch
+46. create a script to generate mock data under test:watch
 
 ```json
 "generate-mock-data": "babel-node buildScripts/generateMockData"
 ```
 * now run `npm generate-mock-data` in the terminal and you should see in green, "Mock data generated", as well as a new db.json file created in the api folder.
 
-51. Create a new script under the last one.
+47. Create a new script under the last one.
 
 ```json
 "start-mockapi": "json-server --watch src/api/db.json --port 3001"
@@ -712,7 +667,7 @@ fs.writeFile("./src/api/db.json", json, function (err) {
 * now run `npm start-mockapi` and voala! They even have the sweetest emoji
 
 
-52. Create a new script above the previous one, called 
+48. Create a new script above the previous one, called 
 
 ```json
 "prestart-mockapi": "npm run generate-mock-data"
@@ -720,7 +675,7 @@ fs.writeFile("./src/api/db.json", json, function (err) {
 
 * also add `start-mockapi` to the start script
 
-53. We need the app to inteligently point to proper baseURL in each environment. So create a file called `baseUrl.js` in the `api` folder, put this in it.
+49. We need the app to inteligently point to proper baseURL in each environment. So create a file called `baseUrl.js` in the `api` folder, put this in it.
 
 ```js
 export default function getBaseUrl() {
@@ -729,7 +684,7 @@ export default function getBaseUrl() {
 }
 ```
 
-54. Import `getBaseUrl` to the `userApi` file and alter it to look like this
+50. Import `getBaseUrl` to the `userApi` file and alter it to look like this
 
 ```js
 import 'whatwg-fetch'
@@ -755,7 +710,7 @@ function onError(error) {
 
 ```
 
-55. Activate delete button. In `userApi` add an export function to `deleteUser` under `getUsers`
+51. Activate delete button. In `userApi` add an export function to `deleteUser` under `getUsers`
 
 ```js
 export function deleteUser(id) {
@@ -776,7 +731,7 @@ function del(url) {
 }
 ```
 
-56. Activate the Delete buttons. Add the following code to your inde3x.js file inside the getUsers promise
+52. Activate the Delete buttons. Add the following code to your inde3x.js file inside the getUsers promise
 
 ```js
 
@@ -796,9 +751,9 @@ function del(url) {
 
 ```
 
-57. Webpack configuration and minification. Make a copy of the webpack.config and change the name to `webpack.config.prod.js`
+53. Webpack configuration and minification. Make a copy of the webpack.config and change the name to `webpack.config.prod.js`
 
-58. Inside the webpack production config change the devtool setting to `source-map`. This makes sure we can still see our original code in the browser even though its been minified and bundled. Should now look like this...
+54. Inside the webpack production config change the devtool setting to `source-map`. This makes sure we can still see our original code in the browser even though its been minified and bundled. Should now look like this...
 
 ```js
 //...
@@ -811,7 +766,7 @@ export default {
   //...
 ```
 
-59. Change the output path to a new folder called `dist`. You still need to build this, and the file will now look like this
+55. Change the output path to a new folder called `dist`. You still need to build this, and the file will now look like this
 
 ```js
 //...
@@ -825,7 +780,7 @@ export default {
 //...
 ```
 
-60. Add two webpack plugins
+56. Add two webpack plugins
 
 ```js
 //...
@@ -844,9 +799,9 @@ export default {
   //...
 ```
 
-61. Make sure you `import webpack from 'webpack'` at the top of the file
+57. Make sure you `import webpack from 'webpack'` at the top of the file
 
-62. Create new file inside buildScripts and call it `build.js` inside it place this code
+58. Create new file inside buildScripts and call it `build.js` inside it place this code
 
 ```js
 /*eslint-disable no-console */
@@ -887,9 +842,9 @@ webpack(webpackConfig).run((err, stats) => {
 ```
 
 
-63. Create a new file inside buildScripts called `distServer.js` and copy and paste in it the logic from srcServer
+59. Create a new file inside buildScripts called `distServer.js` and copy and paste in it the logic from srcServer
 
-64. It should look like this.
+60. It should look like this.
 
 
 ```js
@@ -928,7 +883,7 @@ app.listen(port, function (err) {
 })
 
 ```
-65. Edit the baseUrl file inside the `api`folder  to look like this...
+61. Edit the baseUrl file inside the `api`folder  to look like this...
 
 ```js
 export default function getBaseUrl() {
@@ -947,7 +902,7 @@ function getQueryStringParameterByName(name, url) {
 
 ```
 
-66. Add production build npm scripts. Underneath `start-mockapi`, in your package.json place the following 4 scripts
+62. Add production build npm scripts. Underneath `start-mockapi`, in your package.json place the following 4 scripts
 
 ```json
 //...
@@ -957,19 +912,19 @@ function getQueryStringParameterByName(name, url) {
     "postbuild": "babel-node buildScripts/distServer.js"
 //...
 ```
-67. Remove this script from index.html, since we are now dynamically building a bundle.js
+63. Remove this script from index.html, since we are now dynamically building a bundle.js
 
 ```html
   <script src="bundle.js"></script>
 ```
 
-68. In `webpack.config.prod.js` add this import 
+64. In `webpack.config.prod.js` add this import 
 
 ```js
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 ```
 
-69. Then inside plugins add the following
+65. Then inside plugins add the following
 
 ```js
     // * Create HTML file that includes reference to bundled JS
@@ -979,7 +934,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
     }),
 ```
 
-70. Copy what you just did in steps 62 and 63 over to the `webpack.config.dev` file. This allows webpack to handle our html in both our dev and production environment.
+66. Copy what you just did in steps 62 and 63 over to the `webpack.config.dev` file. This allows webpack to handle our html in both our dev and production environment.
 
 <br>
 
@@ -991,7 +946,7 @@ npm run build -s
 
 If you inspect devtools and open the network tab, refresh, then look up the bundle.js file you will see the file size to around 3.7K instead of the actual size around 12K which webpack printed to your terminal when you ran the build.
 
-71. Configure our html webpack plugin to minify our html. In the `webpack.config.prod.js`, inside our `new HtmlWebpackPlugin()` under the template and above the inject, add `minify`
+67. Configure our html webpack plugin to minify our html. In the `webpack.config.prod.js`, inside our `new HtmlWebpackPlugin()` under the template and above the inject, add `minify`
 
 ```js
     new HtmlWebpackPlugin({
@@ -1014,7 +969,7 @@ If you inspect devtools and open the network tab, refresh, then look up the bund
 
 Now you can run the build and see the html minified, by right clicking on web page and clicking on `open source`
 
-72. Bundle splitting. In the `webpack.config.prod` file change the entry from an array to an object and add the vendor path, to look like this instead
+68. Bundle splitting. In the `webpack.config.prod` file change the entry from an array to an object and add the vendor path, to look like this instead
 
 ```js
   entry: {
@@ -1023,7 +978,7 @@ Now you can run the build and see the html minified, by right clicking on web pa
 }
 ```
 
-73. Create the vendor file in the src folder `vendor.js`, inside it place this
+69. Create the vendor file in the src folder `vendor.js`, inside it place this
 
 ```js
 
@@ -1046,7 +1001,7 @@ Now you can run the build and see the html minified, by right clicking on web pa
 import fetch from 'whatwg-fetch'
 ```
 
-74. Go to the webpack prod file and above plugins add optimization.splitchunks like this
+70. Go to the webpack prod file and above plugins add optimization.splitchunks like this
 
 ```js
   optimization: {
@@ -1062,7 +1017,7 @@ import fetch from 'whatwg-fetch'
   },
 ```
 
-75. Now that we're generating multiple bundles we cannot hardcode the filename so lets change that to 
+71. Now that we're generating multiple bundles we cannot hardcode the filename so lets change that to 
 
 ```js
 filename: '[name].[chunkhash].js'
@@ -1070,13 +1025,13 @@ filename: '[name].[chunkhash].js'
 
 Now if you run the build you should be able to see in your terminal, webpack has printed two separate chunks aka bundles, main.js and vendor.js and the size has been split between the two, its also generated mapping files for both. And in the webpage if you now open source you can see that both main.js and vendor.js are referenced. And if you look at the network tab you can also see both being requested.
 
-76. Cache busting. Add this import atthe top of the webpack prod file
+72. Cache busting. Add this import atthe top of the webpack prod file
 
 ```js
 import WebpackMd5Hash from 'webpack-md5-hash'
 ```
 
-71. Add the hash to your plugins
+73. Add the hash to your plugins
 
 ```js
 // Hash the files using MD5 so that their names change when the content changes.
@@ -1091,11 +1046,11 @@ filename: '[name].[chunkhash].js'
 
 Now if we run the build you can see that our filenames will have a hashes placed in the middle of them. And since we are using htmlwebpackconfig, if we open index.html we can see that the references were dynamically written for us.
 
-72. Configure webpack to generate a separate css file for the production build. 
+74. Configure webpack to generate a separate css file for the production build. 
 
 <br>
 
-77. a install these 3 npm packages
+75. a install these 3 npm packages
 
 
 ```
@@ -1111,7 +1066,7 @@ npm install --save--dev optimize-css-assets-webpack-plugin
 ```
 <br> 
 
-78. b import this into the prod file
+76. b import this into the prod file
 
 
 ```js
@@ -1120,7 +1075,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
 ```
 
-79. Add an entry point 
+77. Add an entry point 
 
 ```js
 entry: {
@@ -1130,7 +1085,7 @@ entry: {
     styles: path.resolve(__dirname, 'src/index.css')
   },
 ```
-80. To the Optimization add a minimizer with the new plugins
+78. To the Optimization add a minimizer with the new plugins
 
 ```js
 optimization: {
@@ -1155,7 +1110,7 @@ optimization: {
   },
 ```
 
-81. to plugins add the other plugin you imported
+79. to plugins add the other plugin you imported
 
 ```js
 new MiniCssExtractPlugin({
@@ -1165,7 +1120,7 @@ new MiniCssExtractPlugin({
 
 ```
 
-82. Change the module rules to...
+80. Change the module rules to...
 
 ```js
 module: {
@@ -1323,7 +1278,7 @@ export default {
 
 ```
 
-83. Error logging(tracking) with `Track.js`. Go to the [Trackjs website](https://trackjs.com/) and set up an account, once in there are two simple steps.
+81. Error logging(tracking) with `Track.js`. Go to the [Trackjs website](https://trackjs.com/) and set up an account, once in there are two simple steps.
 
 ![track js webpage](https://scontent.fsyd1-1.fna.fbcdn.net/v/t1.0-9/36583128_10160471201535117_1207487861511684096_o.jpg?_nc_cat=0&oh=b2247485bb7bf0a5e4a9145e1ad7ccb5&oe=5BA11EC0)
 
@@ -1339,7 +1294,7 @@ Then run the build and  paste step 2 in the console, to see that its working go 
 
 ![first error log](https://scontent.fsyd1-1.fna.fbcdn.net/v/t1.0-9/36542601_10160471221305117_5135121658545176576_o.jpg?_nc_cat=0&oh=63e2a1d86b35ab93305ea1717bdf4194&oe=5BB0705D)
 
-84. Adding conditionals to your html. This is so the code we just pasted into our html from trackjs only runs in our production build and not in our dev env.
+82. Adding conditionals to your html. This is so the code we just pasted into our html from trackjs only runs in our production build and not in our dev env.
 
 Htmlwebpack plugin supports a number of different templating languages out of the box including jade, ejs, underscore, handlebars and html loader, and if you dont specify a loader then it defaults to embeded js aka ejs, you can read about the ejs syntax [here](http://www.embeddedjs.com/).
 
@@ -1353,7 +1308,7 @@ Store the trackjs TOKEN you were given on their website in the `webpack.config.p
 trackJSToken: 'INSERT YOUR TOKEN HERE'
 ```
 
-85. Using ejs, declare this section should only be rendered when we have a trackjs token defined in webpack config. Around the trackjs script place this
+83. Using ejs, declare this section should only be rendered when we have a trackjs token defined in webpack config. Around the trackjs script place this
 
 ```html
 <% if (htmlWebpackPlugin.options.trackJSToken) { %>
@@ -1385,15 +1340,15 @@ then place an explanitory comment in your index html
 
 then run npm build to test its working acordingly.
 
-86. Automated API deploy via Heroku. Go to the [Heroku website](https://www.heroku.com/), create a free account with them and set your `primary development language` to `Node.js`. Once you're inside you should see this landing page, click on the Node.js icon, this will open the docs on how to get started with Heroku
+84. Automated API deploy via Heroku. Go to the [Heroku website](https://www.heroku.com/), create a free account with them and set your `primary development language` to `Node.js`. Once you're inside you should see this landing page, click on the Node.js icon, this will open the docs on how to get started with Heroku
 
 ![heroku introduction landing page](https://scontent-syd2-1.xx.fbcdn.net/v/t1.0-9/36682145_10160475281450117_1531083659803623424_n.jpg?_nc_cat=0&oh=08463ee3cbf15a80ec934509ed0ee4bc&oe=5B9F00A1)
 
-81. Follow the heroku introduction and setup steps, and once you reach the third step `Prepare the app`, instead of using their app, go [here](https://github.com/Anaizing/js-dev-env-demo-api) and make sure you `fork` the repo so you have the right to work on it in heroku. And open the forked repo in your code editor. Run npm install.
+85. Follow the heroku introduction and setup steps, and once you reach the third step `Prepare the app`, instead of using their app, go [here](https://github.com/Anaizing/js-dev-env-demo-api) and make sure you `fork` the repo so you have the right to work on it in heroku. And open the forked repo in your code editor. Run npm install.
 
-87. Change the name on package.json to point to your repo on github.
+86. Change the name on package.json to point to your repo on github.
 
-88. Open the terminal and type
+87. Open the terminal and type
 
 ```
 heroku login
@@ -1401,14 +1356,14 @@ heroku login
 
 Follow the login prompts
 
-89. Configure your app to work with heroku. Run
+88. Configure your app to work with heroku. Run
 
 ```
 heroku create
 ```
 This will give you a website, with a welcome message.
 
-90. In the command line run
+89. In the command line run
 
 ```
 heroku git:remote -a  calm-beach-81430
@@ -1416,7 +1371,7 @@ heroku git:remote -a  calm-beach-81430
 
 but change out `calm-beach-81430` for whatever name you were given
 
-91. then run 
+90. then run 
 ```
 git push heroku master
 ```
@@ -1429,7 +1384,7 @@ git push heroku master
 
 to push our changes up to heroku. Heroku will take the code from github and deploy it to our url.
 
-92. Jump back to our UI project aka js-dev-env. Go into the api folder and in it baseUrl.js change the url for production from the local to the one you created in heroku, should look similiar to this, except with your url.
+91. Jump back to our UI project aka js-dev-env. Go into the api folder and in it baseUrl.js change the url for production from the local to the one you created in heroku, should look similiar to this, except with your url.
 
 ```js
 export default function getBaseUrl() {
@@ -1441,7 +1396,7 @@ return getQueryStringParameterByName('useMockApi')
 
 make sure to include the trailing / at the end.
 
-93. open distServer.js insde the buildScripts folder,remove this section
+92. open distServer.js insde the buildScripts folder,remove this section
 
 ```js
 
@@ -1455,13 +1410,13 @@ app.get('/users', function (req, res) {
 })
 ```
 
-94. Deploy static front end. Surge (a static web publisher for front end) is already installed globally, since it was in the package.json. So go to the package.json file nd under postbuild add this script
+93. Deploy static front end. Surge (a static web publisher for front end) is already installed globally, since it was in the package.json. So go to the package.json file nd under postbuild add this script
 
 ```json
 "deploy": "surge ./dist"
 ```
 
-95. Run the build, open dev tools, look in network and hover over users, you'll see we're making a call to heroku. with all this set up you can now run
+94. Run the build, open dev tools, look in network and hover over users, you'll see we're making a call to heroku. with all this set up you can now run
 
 ```
 npm run deploy
