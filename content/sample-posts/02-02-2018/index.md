@@ -14,9 +14,9 @@ tags:
 
 # Steps to remember 
 
-Lets build a javascript development environment with all the good stuff minus the javascript frameworks. Including  Package Mananagement, Bundling, Minification, Sourcemaps, Transpiling, Dynamic HTML Generation, Centralised HTTP, Mock API Framework, Component Libraries, Development Web Server, Linting, Automated Testing, Continuous Intergration, Automated Build, Automated Deployment, separating API and IU, Working Example app, Sharing work in progress, Error Tracking. Dont blink now.
+Lets build a javascript development environment with all the good stuff minus the javascript frameworks in under 100 steps. Including  Package Mananagement, Bundling, Minification, Sourcemaps, Transpiling, Dynamic HTML Generation, Centralised HTTP, Mock API Framework, Component Libraries, Development Web Server, Linting, Automated Testing, Continuous Intergration, Automated Build, Automated Deployment, separating API and IU, Working Example app, Sharing work in progress, Error Tracking. Dont blink now.
 
-# Git started, add editor config
+## Git started, add editor config
 
 1. Start a new repo on Github, make sure to add `node` to the `.gitignore`
 2. Clone said repo to your magical computer machine of choice. And open in your editor of choice (I'm in love with VS code)
@@ -508,6 +508,8 @@ build: off
 39. Go to the [AppVeyor](https://www.appveyor.com/) website, login via your github account, select the project you're on.
 * again you need to add and commit all files then push them up to github, then you can go back to AppVeyor, click on latest and you'll see your project in action.
 
+## HTTP calls
+
 40. Set up `fetch`. Open srcServer and add a new route beneath the current `app.get` already there...
 
 ```js
@@ -750,6 +752,8 @@ function del(url) {
   })
 
 ```
+
+## Production build
 
 53. Webpack configuration and minification. Make a copy of the webpack.config and change the name to `webpack.config.prod.js`
 
@@ -1339,6 +1343,9 @@ then place an explanitory comment in your index html
 ```
 
 then run npm build to test its working acordingly.
+
+
+## Production Deploy
 
 84. Automated API deploy via Heroku. Go to the [Heroku website](https://www.heroku.com/), create a free account with them and set your `primary development language` to `Node.js`. Once you're inside you should see this landing page, click on the Node.js icon, this will open the docs on how to get started with Heroku
 
