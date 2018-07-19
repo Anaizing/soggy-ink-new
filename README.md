@@ -1,4 +1,4 @@
-# Soggy Ink
+# Soggy Ink :octopus:
 ## My personal blog built with Gatsby/React/GraphQL
 
 ![Soggy Ink web app mockup screenshot](soggyDevicesApple.png)
